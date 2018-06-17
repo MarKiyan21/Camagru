@@ -9,6 +9,11 @@ class Router {
         $this->routes = include($routesPath);
     }
 
+	public function error404() {
+		require_once(ROOT.'/views/error/404.php');
+		exit;
+	}
+
     /**
      * Return request string
      * @return string
@@ -35,6 +40,10 @@ class Router {
                 $controllerName = ucfirst($controllerName);
                 
                 $actionName = 'action'.ucfirst(array_shift($segments));
+                
+                if ($controllerName == 'SiteController' && $actionName !== 'actionIndex') {
+	                $this->error404();
+                }
 
                 $parameters = $segments;
                 
@@ -43,15 +52,19 @@ class Router {
                 if (file_exists($controllerFile)) {
                     include_once($controllerFile);
                 }
+                else {
+	                $this->error404();
+                }
 
                 $controllerObject = new $controllerName;
+                
                 $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+                
                 if ($result != null) {
                     break;
                 }
             }
         }
-
         // Якщо є, визначити який контролер і action оброблять запит
 
         // Підключити файл класу-контролера

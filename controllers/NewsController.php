@@ -1,17 +1,12 @@
 <?php
 
-include_once ROOT.'/models/News.php';
-
 class NewsController {
     public function actionIndex() {
         
         $newsList = array();
-        $newsList = News::getNewsList();
+//         $newsList = News::getNewsList();
 
         require_once(ROOT.'/views/news/index.php');
-        echo '<pre>';
-        print_r($newsList);
-        echo '<pre>';
 
         return true;
     }
@@ -19,12 +14,12 @@ class NewsController {
     public function actionView($id) {
         
         $newsView = array();
-        $newsView = News::getNewsItemById($id);
+//         $newsView = News::getNewsItemById($id);
 
-        echo '<pre>';
-        print_r($newsView);
-        echo '<pre>';
-
+// 		require_once(ROOT.'/views/news/view.php');
+		echo("<pre>");
+        print($id);
+		echo("</pre>");
         return true;
     }
 }
