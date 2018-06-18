@@ -5,6 +5,7 @@ return array(
     'news' => 'news/index',
     'product/([a-z]+)' => 'product/roma/$1',
     'products' => 'product/list',
+    'user/login' => 'user/login',
     'user/register' => 'user/register',
     '' => 'site/index'
     
