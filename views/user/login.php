@@ -1,7 +1,12 @@
 <?php
 
-echo("LOGIN");
-if(!isset($_SESSION) || $_SESSION['user'] == 0) {
-	$_SESSION['user'] = 1;
+
+if(isset($_SESSION['user'])) {
+	require_once(ROOT."/views/site/index.php");
+} else {
+	echo("login page");
+	$_SESSION['user'] = "marik";
+	require_once(ROOT."/views/site/index.php");
 }
-echo("Session user ==> ".$_SESSION['user']);
+
+print_r($_SESSION);

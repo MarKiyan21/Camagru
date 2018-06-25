@@ -13,5 +13,11 @@ class UserController {
 		
 		return true;
 	}
+	
+	public function actionLogout() {
+		require_once(ROOT.'/views/user/logout.php');
+		
+		return true;
+	}
 
 }

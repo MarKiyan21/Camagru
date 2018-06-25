@@ -7,6 +7,7 @@ return array(
     'products' => 'product/list',
     'user/login' => 'user/login',
     'user/register' => 'user/register',
+    'user/logout' => 'user/logout',
     '' => 'site/index'
     
 );

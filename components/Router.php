@@ -27,6 +27,9 @@ class Router {
         // Перевірити наявність такого запиту в routes.php
         foreach ($this->routes as $uriPattern => $path) {
             if (preg_match("~$uriPattern~", $uri)) {
+	            
+	           if (!isset($_SESSION))
+                   session_start();
 
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 
