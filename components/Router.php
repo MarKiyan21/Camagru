@@ -20,16 +20,39 @@ class Router {
         }
     }
 
+	private function redirect($uriPattern) {
+		echo($uriPattern);
+		if ($uriPattern == 'news/([0-9]+)') {
+			return;
+		}
+		else if ($uriPattern === 'user/login' || $uriPattern === 'user/register') {
+            if (isset($_SESSION['user']) && $_SESSION['user'] == 'marik') {
+	            print_r("AFTER REDIRECT TO MAIN, WHEN USER AUTHORIZED");
+                header("location: /");
+                exit;
+            }
+        }
+        else if (!isset($_SESSION['user'])) {
+	        print_r("AFTER REDIRECT TO LOGIN, WHEN USER NONE AUTHORIZED");
+            header("location: /user/login");
+            exit;
+        }
+	}
+
     public function run() {
         // Отримати рядок запиту
         $uri = $this->getUri();
+        
+        if (!isset($_SESSION))
+			session_start();
 
         // Перевірити наявність такого запиту в routes.php
         foreach ($this->routes as $uriPattern => $path) {
+	        
             if (preg_match("~$uriPattern~", $uri)) {
-	            
-	           if (!isset($_SESSION))
-                   session_start();
+// 	            print_r("URI=>".$uri." Pattern=>".$uriPattern."!");
+                   
+//                 $this->redirect($uriPattern);
 
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 
