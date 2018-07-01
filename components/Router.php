@@ -20,23 +20,31 @@ class Router {
         }
     }
 
-	private function redirect($uriPattern) {
-		echo($uriPattern);
-		if ($uriPattern == 'news/([0-9]+)') {
-			return;
+	private function redirect($url, $statusCode = 303) {
+		header('Location: ' . $url, true, $statusCode);
+		die();
+	}
+
+	private function checkPattern($uriPattern) {
+		switch ($uriPattern) {
+			case 'photos':
+				break;
+			
+			case 'user/login$':
+			case 'user/register$':
+				if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+	                $this->redirect("/");
+	            }
+	            break;
+	            
+	        case 'user/info/([A-Za-z]*$)':
+	        case 'photos/([0-9]+)':
+	        	if (!isset($_SESSION['user'])) {
+// 			        print_r("AFTER REDIRECT TO LOGIN, WHEN USER NONE AUTHORIZED");
+		            $this->redirect("/user/login");
+		        }
+		        break;
 		}
-		else if ($uriPattern === 'user/login' || $uriPattern === 'user/register') {
-            if (isset($_SESSION['user']) && $_SESSION['user'] == 'marik') {
-	            print_r("AFTER REDIRECT TO MAIN, WHEN USER AUTHORIZED");
-                header("location: /");
-                exit;
-            }
-        }
-        else if (!isset($_SESSION['user'])) {
-	        print_r("AFTER REDIRECT TO LOGIN, WHEN USER NONE AUTHORIZED");
-            header("location: /user/login");
-            exit;
-        }
 	}
 
     public function run() {
@@ -52,7 +60,7 @@ class Router {
             if (preg_match("~$uriPattern~", $uri)) {
 // 	            print_r("URI=>".$uri." Pattern=>".$uriPattern."!");
                    
-//                 $this->redirect($uriPattern);
+                $this->checkPattern($uriPattern);
 
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
 

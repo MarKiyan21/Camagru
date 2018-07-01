@@ -4,7 +4,7 @@
 // 	$_SESSION['user'] = 0;
 // 	echo("Session user ==> ".$_SESSION['user']);
 // } else {
-// 	echo("You need login or register");
+echo("Logout page");
+print_r($_SESSION);
 // }
 
-unset($_SESSION['user']);

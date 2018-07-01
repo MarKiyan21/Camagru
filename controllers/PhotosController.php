@@ -1,12 +1,12 @@
 <?php
 
-class NewsController {
+class PhotosController {
     public function actionIndex() {
         
         $newsList = array();
 //         $newsList = News::getNewsList();
 
-        require_once(ROOT.'/views/news/index.php');
+        require_once(ROOT.'/views/photos/index.php');
 
         return true;
     }
