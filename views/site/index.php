@@ -8,13 +8,12 @@
 		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto" rel="stylesheet">
 <!-- 	<link href="template/css/style.css" rel="stylesheet" type="text/css"> -->
+	<style>
+		<?php include (ROOT.'/template/css/style.css');?>
+	</style>
 </head>
 
-<body class="main">
-
-<style>
-<?php include (ROOT.'/template/css/style.css');?>
-</style>
+<body>
 
 <?php include (ROOT.'/views/layouts/header.php');?>
 
