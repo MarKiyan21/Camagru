@@ -68,9 +68,8 @@
     	e.preventDefault();
     	var form = document.getElementsByClassName('form')[0];
 		fadeOut(form, 500);
-		var wrapper = document.getElementsByClassName('wrapper')[0];
-		wrapper.className = 'form-success';
+// 		var wrapper = document.getElementsByClassName('wrapper')[0];
+// 		wrapper.className = 'form-success';
 	}, false);
-
 
 </script>

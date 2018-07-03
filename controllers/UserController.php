@@ -9,7 +9,7 @@ class UserController {
 	}
 
 	public function actionRegister() {
-		$_SESSION['user'] = "marik";
+// 		$_SESSION['user'] = "marik";
 		require_once(ROOT.'/views/user/register.php');
 		
 		return true;

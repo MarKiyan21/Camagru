@@ -8,6 +8,7 @@
 		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto" rel="stylesheet">
 	<link rel="shortcut icon" type="image/x-icon" href="template/img/favicon.ico"/>
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 <!-- 	<link href="template/css/style.css" rel="stylesheet" type="text/css"> -->
 	<style>
 		<?php
@@ -22,11 +23,11 @@
 		<div class="title"><a href="/">Camagru</a></div>
 		<div class="pull-right">
 			<?php if(empty($_SESSION['user'])): ?>
-				<a href="user/login">Sigh in</a>
-				<a href="user/register">Sign up</a>
+				<a href="/user/login">Sigh in</a>
+				<a href="/user/register">Sign up</a>
 			<?php else: ?>
-					<a href="user/info/mkyianyt">mkyianyt</a>
-					<a href="user/logout">Logout</a>
+					<a href="/user/info/mkyianyt">mkyianyt</a>
+					<a href="/user/logout">Logout</a>
 			<?php endif; ?>
 		</div>
 		
