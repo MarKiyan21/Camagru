@@ -16,10 +16,8 @@ class PhotosController {
         $newsView = array();
 //         $newsView = News::getNewsItemById($id);
 
-// 		require_once(ROOT.'/views/news/view.php');
-		echo("<pre>");
-        print($id);
-		echo("</pre>");
+		require_once(ROOT.'/views/photos/view.php');
+
         return true;
     }
 }

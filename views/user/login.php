@@ -7,9 +7,9 @@
 <div class="wrapper">
 	<div class="container">
 		<h1>Welcome</h1>
-		<form class="form">
-			<input type="text" placeholder="Username">
-			<input type="password" placeholder="Password">
+		<form id="login-form">
+			<input id="login" type="text" placeholder="Username">
+			<input id="pass" type="password" placeholder="Password">
 			<button type="submit" id="login-button">Login</button>
 		</form>
 	</div>
@@ -32,44 +32,18 @@
 
 <script>
 	
-	function fadeOut( elem, ms )
-	{
-	  if( ! elem )
-	    return;
+	var button = document.getElementById('login-button');
 	
-	  if( ms )
-	  {
-	    var opacity = 1;
-	    var timer = setInterval( function() {
-	      opacity -= 50 / ms;
-	      if( opacity <= 0 )
-	      {
-	        clearInterval(timer);
-	        opacity = 0;
-	        elem.style.display = "none";
-	        elem.style.visibility = "hidden";
-	      }
-	      elem.style.opacity = opacity;
-	      elem.style.filter = "alpha(opacity=" + opacity * 100 + ")";
-	    }, 50 );
-	  }
-	  else
-	  {
-	    elem.style.opacity = 0;
-	    elem.style.filter = "alpha(opacity=0)";
-	    elem.style.display = "none";
-	    elem.style.visibility = "hidden";
-	  }
-	}
-	
-	var element = document.getElementById('login-button');
-	
-	element.addEventListener("click", function(e) {
+	button.addEventListener("click", function(e) {
     	e.preventDefault();
-    	var form = document.getElementsByClassName('form')[0];
-		fadeOut(form, 500);
-// 		var wrapper = document.getElementsByClassName('wrapper')[0];
-// 		wrapper.className = 'form-success';
+    	
+    	var form = document.getElementById('login-form');
+    	var loginValue = document.getElementById('login').value;
+    	var passValue = document.getElementById('pass').value;
+
+    	console.log(window.location.pathname = "user/info/" + loginValue);
+
+// 		fadeOut(form, 500);
 	}, false);
 
 </script>

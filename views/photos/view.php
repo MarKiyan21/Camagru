@@ -1,3 +1,8 @@
-<?php
+<body>
+<?php include (ROOT.'/views/layouts/header.php');?>
 
-echo("trulala");
+<?php echo("Current photo page");?>
+
+<?php include (ROOT.'/views/layouts/footer.php');?>
+</body>
+</html>
