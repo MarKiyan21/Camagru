@@ -1,4 +1,3 @@
-<body>
 <?php include (ROOT.'/views/layouts/header.php');?>
 
 <?php echo("info page");?>
