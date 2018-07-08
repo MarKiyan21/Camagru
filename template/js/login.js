@@ -1,12 +1,13 @@
-var button = document.getElementById('login-button');
-console.log(button);
+var loginButton = document.getElementById('login-button');
 	
-button.addEventListener("click", function(e) {
+loginButton.addEventListener("click", function(e) {
 	e.preventDefault();
 	
 	var form = document.getElementById('login-form');
-	var loginValue = document.getElementById('login').value;
-	var passValue = document.getElementById('pass').value;
+	var loginValue = document.getElementById('nickname').value;
+	var passValue = document.getElementById('password').value;
+	
+	
 
 	window.location.pathname = "user/info/" + loginValue;
 

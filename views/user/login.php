@@ -1,15 +1,12 @@
-<?php
-// $_SESSION['user'] = 'marik';
-?>
-
 <?php include (ROOT.'/views/layouts/header.php');?>
+
 <div class="wrapper">
 	<div class="container">
-		<h1>Welcome</h1>
+		<h1>Welcome back</h1>
 		<form id="login-form">
-			<input id="login" type="text" placeholder="Username">
-			<input id="pass" type="password" placeholder="Password">
-			<button type="submit" id="login-button">Login</button>
+			<input id="nickname" type="text" placeholder="Username">
+			<input id="password" type="password" placeholder="Password">
+			<button id="login-button" type="submit">Login</button>
 		</form>
 	</div>
 	
@@ -27,13 +24,11 @@
 	</ul>
 </div>
 
-<?php include ROOT.'/views/layouts/footer.php';?>
-
 <script>
 	<?php
-		include (ROOT.'/template/js/login.js');
-			
+		include ROOT.'/template/js/login.js';
 	?>
 </script>
 
-</body>
+<?php include ROOT.'/views/layouts/footer.php';?>
+
