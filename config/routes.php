@@ -1,6 +1,8 @@
 <?php
 
 return array(
+	'^database/create$' => 'database/create',
+	'^database/delete$' => 'database/delete',
 	'^photos/([0-9]+)' => 'photos/view/$1',
     '^photos' => 'photos/index',
     '^user/login$' => 'user/login',
