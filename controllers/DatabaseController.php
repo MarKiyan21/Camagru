@@ -1,19 +1,18 @@
 <?php
+include(ROOT."/config/setup.php");
 	
 class DatabaseController {
 	
 	public function actionCreate() {
-		$dbObject = new Db();
 		
-		$dbObject->actionCreate();
+		doSomethingWithDB("create");
 		
 		return true;
 	}
 
 	public function actionDelete() {
-		$dbObject = new Db();
 		
-		$dbObject->actionDelete();
+		doSomethingWithDB("delete");
 		
 		return true;
 	}

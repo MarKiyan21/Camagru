@@ -2,11 +2,11 @@
 
 class Db {
     
-    public static function actionCreate() {
+    public static function create() {
 	    $db = self::getConnection();
         
         if ($db !== null) {
-	        self::actionDelete();
+	        self::delete();
             $tables = file_get_contents(ROOT.'/config/mysql/tables.sql');
             try {
                 $db->exec($tables);
@@ -21,20 +21,22 @@ class Db {
         return true;
     }
     
-    public static function actionDelete() {
+    public static function delete() {
 	    $db = self::getConnection();
 	    
-        try {
-            $db->exec("DROP DATABASE camagru; CREATE DATABASE camagru;");
-        }
-        catch (PDOException $error) {
-            echo ('Deleting error: ' . $error->getMessage() . PHP_EOL);
-            return false;
-        }
-        if ($db === null) {
-	        return false;
-        }
-        return true;
+	    if ($db !== null) {
+		    try {
+	            $db->exec("DROP DATABASE camagru; CREATE DATABASE camagru;");
+	            return true;
+	        }
+	        catch (PDOException $error) {
+	            echo ('Deleting error: ' . $error->getMessage() . PHP_EOL);
+	            return false;
+	        }
+	    }
+    
+        return false;
+        
     }
     
     private static function getConnection() {
