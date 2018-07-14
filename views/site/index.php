@@ -1,5 +1,3 @@
-<body>
-
 <?php include (ROOT.'/views/layouts/header.php');?>
 
 <!-- <pre>MAIN CONTENT</pre> -->

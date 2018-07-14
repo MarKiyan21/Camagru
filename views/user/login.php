@@ -24,11 +24,5 @@
 	</ul>
 </div>
 
-<script>
-	<?php
-		include ROOT.'/template/js/login.js';
-	?>
-</script>
-
 <?php include ROOT.'/views/layouts/footer.php';?>
 

@@ -37,7 +37,7 @@ class Router {
 	            }
 	            break;
 	            
-	        case 'user/info/([A-Za-z]*$)':
+	        case 'user/info/([A-Za-z0-9]*$)':
 	        case 'photos/([0-9]+)':
 	        	if (!isset($_SESSION['user'])) {
 // 			        print_r("AFTER REDIRECT TO LOGIN, WHEN USER NONE AUTHORIZED");

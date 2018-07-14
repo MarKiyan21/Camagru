@@ -1,5 +1,5 @@
 <?php include (ROOT.'/views/layouts/header.php');?>
-<body>
+
 <div class="wrapper">
 	<div class="container">
 		<h1>Welcome to Camagru</h1>
@@ -25,11 +25,5 @@
 		<li></li>
 	</ul>
 </div>
-
-<script>
-	<?php
-		include ROOT.'/template/js/register.js';
-	?>
-</script>
 
 <?php include ROOT.'/views/layouts/footer.php';?>

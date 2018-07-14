@@ -7,15 +7,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto" rel="stylesheet">
-	<link rel="shortcut icon" type="image/x-icon" href="template/img/favicon.ico"/>
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.png"/>
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-<!-- 	<link href="template/css/style.css" rel="stylesheet" type="text/css"> -->
-	<style>
-		<?php
-			include (ROOT.'/template/css/style.css');
-			include (ROOT.'/template/css/layouts.css');
-		?>
-	</style>
+	<link href="/template/css/style.css" rel="stylesheet" type="text/css">
+	<link href="/template/css/layouts.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="header">
@@ -26,7 +21,7 @@
 				<a href="/user/login">Sigh in</a>
 				<a href="/user/register">Sign up</a>
 			<?php else: ?>
-					<a href="/user/info/mkyianyt">mkyianyt</a>
+					<a href="/user/info/<?php echo $_SESSION['user'] ?>"><?php echo $_SESSION['user'] ?></a>
 					<a href="/user/logout">Logout</a>
 			<?php endif; ?>
 		</div>
