@@ -1,5 +1,21 @@
-var registerButton = document.getElementById('register-button');
+var login = document.getElementById('nickname');
+var email = document.getElementById('email');
+var newpassword = document.getElementById('new-password');
+var confpassword = document.getElementById('conf-password');
+
+function delClass(e) {
+	if (e.target.classList.contains('incorrect')) {
+		e.target.classList.remove("incorrect");
+	}
 	
+}
+
+login.addEventListener("click", delClass, false);
+email.addEventListener("click", delClass, false);
+newpassword.addEventListener("click", delClass, false);
+confpassword.addEventListener("click", delClass, false);
+
+/*
 registerButton.addEventListener("click", function(e) {
 	e.preventDefault();
 	
@@ -28,3 +44,4 @@ registerButton.addEventListener("click", function(e) {
 // 	window.location.pathname = "user/info/" + loginValue;
 
 }, false);
+*/
