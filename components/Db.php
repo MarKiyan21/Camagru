@@ -39,7 +39,7 @@ class Db {
         
     }
     
-    private static function getConnection() {
+    public static function getConnection() {
 
 	    global $DB_DSN;
 	    global $DB_USER;

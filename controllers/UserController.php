@@ -2,7 +2,14 @@
 	
 class UserController {
 	
-	public static function checkEmail($email) {
+	public static function isLoginExist($login) {
+		if (!empty(Users::getUserByName($login))) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static function isEmailValid($email) {
 		if (!preg_match("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/", $email))
 			return false;
 		return true;
@@ -17,21 +24,37 @@ class UserController {
 	public function actionRegister() {
 		$login = "";
 		$email = "";
-		$newpass = "";
-		$confpass = "";
-		$error = "";
+		$erLogin = "";
+		$erEmail = "";
+		$erPass = "";
 
 		if (isset($_POST['submit'])) {
-			print_r($_POST);
-			if (!self::checkEmail($_POST['email'])) {
-				$login = $_POST['login'];
-				$email = $_POST['email'];
-				$newpass = $_POST['newpass'];
-				$confpass = $_POST['confpass'];
-				$error = "incorrect";
-				print("INCORRECT EMAIL");
+			if (!isset($_POST['login']) || !isset($_POST['email']) || !isset($_POST['newpass']) || !isset($_POST['confpass'])) {
+				return false;
+			}
+			if (self::isLoginExist(trim($_POST['login']))) {
+				$erLogin = "incorrect";
+				$login = trim($_POST['login']);
+				$email = strtolower(trim($_POST['email']));
+				print("INCORRECT LOGIN".PHP_EOL);
 			} else {
-				print("CORRECT EMAIL");
+				print("CORRECT LOGIN".PHP_EOL);
+			}
+			
+			if (!self::isEmailValid(trim($_POST['email']))) {
+				$erEmail = "incorrect";
+				$login = trim($_POST['login']);
+				$email = strtolower(trim($_POST['email']));
+				print("INCORRECT EMAIL".PHP_EOL);
+			} else {
+				print("CORRECT EMAIL".PHP_EOL);
+			}
+			
+			if ($_POST['newpass'] !== $_POST['confpass']) {
+				$erPass = "incorrect";
+				print("INCORRECT PASSWORD");
+			} else {
+				print("CORRECT PASSWORD");
 			}
 		}
 		
@@ -41,6 +64,24 @@ class UserController {
 	}
 	
 	public function actionLogin() {
+		$login = "";
+		$erLogin = "";
+		$erPass = "";
+
+		if (isset($_POST['submit'])) {
+			if (!isset($_POST['login']) || !isset($_POST['pass'])) {
+				return false;
+			}
+			if (!self::isLoginExist(trim($_POST['login']))) {
+				$erLogin = "incorrect";
+				$login = trim($_POST['login']);
+				$email = strtolower(trim($_POST['email']));
+				print("INCORRECT LOGIN".PHP_EOL);
+			} else {
+				print("CORRECT LOGIN".PHP_EOL);
+			}
+		}
+		
 		require_once(ROOT.'/views/user/login.php');
 		
 		return true;
