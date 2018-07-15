@@ -61,6 +61,13 @@ body :-ms-input-placeholder {
   font-weight: 200;
 }
 
+#start {
+	font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 form {
   padding: 20px 0;
   position: relative;

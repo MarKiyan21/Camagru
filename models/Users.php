@@ -5,7 +5,16 @@ class Users {
 	public static function add($nickname, $email, $password, $token) {
 		$db = Db::getConnection();
 
-		$sql = "INSERT INTO users (username, email, password, token) VALUES('$nickname', '$email', '$password', '$token')";
+		$sql = "INSERT INTO users (username, email, password, token) VALUES('$nickname', '$email', '$password', '$token');";
+		$result = $db->query($sql);
+		
+		return $result;
+	}
+	
+	public static function update($param, $value) {
+		$db = Db::getConnection();
+
+		$sql = "UPDATE users SET " . $param . " = " . $value .";";
 		$result = $db->query($sql);
 		
 		return $result;

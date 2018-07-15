@@ -101,7 +101,7 @@ class UserController {
 				
 				Users::add($login, $email, $password, $token);
 				
-				$message = "Hi, " . $login . "!\nPlease activate your account for <a href='http://" . $_SERVER['HTTP_HOST'] . "/user/info/" . $login . "?token=" . $token . "&email=" . $email . "'> this link</a>.\n";
+				$message = "Hi, " . $login . "!\nPlease activate your account for <a href='http://" . $_SERVER['HTTP_HOST'] . "/user/activate/". $token . "/" . $email . "'> this link</a>.\n";
 				self::sendMail($email, "Registration", $message);
 // 				$_SESSION['user'] = $login;
 				$this->redirect('/user/login');
@@ -152,6 +152,23 @@ class UserController {
 		}
 		
 		require_once(ROOT.'/views/user/login.php');
+		
+		return true;
+	}
+	
+	public function actionActivate($token, $email) {
+		
+		$user = Users::getUserByEmail(htmlspecialchars($email));
+		if (empty($user) || $user['token'] !== $token) {
+			$status = "error";
+		} else if ($user['activate'] == 1) {
+			$status = "already";
+		} else {
+			$status = "ok";
+			Users::update("activate", 1);
+		}
+		
+		require_once(ROOT.'/views/user/activate.php');
 		
 		return true;
 	}
