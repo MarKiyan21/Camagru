@@ -1,7 +1,5 @@
 <?php include (ROOT.'/views/layouts/header.php');?>
 
-<!-- <pre>MAIN CONTENT</pre> -->
+<?php echo("main page");?>
 
 <?php include ROOT.'/views/layouts/footer.php';?>
-
-</body>

@@ -20,6 +20,23 @@ class UserController {
 		return true;
 	}
 	
+	public static function isPassMatches($login, $password) {
+		$user = Users::getUserByName($login);
+		if (empty($user) || $user['password'] !== $password) {
+			return false;
+		}
+		return true;
+		
+	}
+	
+	public static function isActivate($login) {
+		$user = Users::getUserByName($login);
+		if (empty($user) || $user['activate'] != 1) {
+			return false;
+		}
+		return true;
+	}
+	
 	public static function sendMail($to, $subject, $message) {
 		$encoding = "utf-8";
 		// Set preferences for Subject field
@@ -74,6 +91,7 @@ class UserController {
 				$login = trim(htmlspecialchars($_POST['login']));
 				$email = trim(htmlspecialchars($_POST['email']));
 			} else {}
+
 			if (empty($erLogin) && empty($erEmail) && empty($erPass)) {
 				
 				$login = trim(htmlspecialchars($_POST['login']));
@@ -85,8 +103,8 @@ class UserController {
 				
 				$message = "Hi, " . $login . "!\nPlease activate your account for <a href='http://" . $_SERVER['HTTP_HOST'] . "/user/info/" . $login . "?token=" . $token . "&email=" . $email . "'> this link</a>.\n";
 				self::sendMail($email, "Registration", $message);
-				$_SESSION['user'] = $login;
-				$this->redirect('/user/info/'.$login);
+// 				$_SESSION['user'] = $login;
+				$this->redirect('/user/login');
 		
 				return true;
 			}
@@ -101,6 +119,7 @@ class UserController {
 		$login = "";
 		$erLogin = "";
 		$erPass = "";
+		$isActive = true;
 
 		if (isset($_POST['submit'])) {
 			if (!isset($_POST['login']) || !isset($_POST['pass'])) {
@@ -108,11 +127,27 @@ class UserController {
 			}
 			if (!self::isLoginExist(trim($_POST['login']))) {
 				$erLogin = "incorrect";
-				$login = trim($_POST['login']);
-				$email = strtolower(trim($_POST['email']));
-				print("INCORRECT LOGIN".PHP_EOL);
-			} else {
-				print("CORRECT LOGIN".PHP_EOL);
+				$login = trim(htmlspecialchars($_POST['login']));
+			} else {}
+			
+			if (!$this->isPassMatches(trim(htmlspecialchars($_POST['login'])), hash("whirlpool", $_POST['pass']))) {
+				$erPass = "incorrect";
+				$login = trim(htmlspecialchars($_POST['login']));
+			} else {}
+			
+			if (!$this->isActivate(trim(htmlspecialchars($_POST['login'])))) {
+				$isActive = false;
+			} else {}
+
+			if (empty($erLogin) && empty($erPass) && $isActive) {
+				
+				$login = trim(htmlspecialchars($_POST['login']));
+				$password = hash("whirlpool", $_POST['pass']);
+
+				$_SESSION['user'] = $login;
+				$this->redirect('/user/info/'.$login);
+		
+				return true;
 			}
 		}
 		

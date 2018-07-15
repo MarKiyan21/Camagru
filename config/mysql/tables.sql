@@ -34,5 +34,5 @@ CREATE TABLE `likes` (
   PRIMARY KEY (`like_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`username`, `email`, `password`, `user_pic`, `token`, `role`) VALUES
-		('mkyianyt', 'mariankyianytsia@gmail.com', '6e3cc936afbb78d3aafc48bdc65fe9a4313b7bc1393dc04cc4f83861228df3d5e79873045ed879ab15397937915cfae6bfa8b12a8d7576c0aff02e98acedb682', '/template/img/avatars/nopic.png', NULL, 1);
+INSERT INTO `users` (`username`, `email`, `password`, `user_pic`, `token`, `activate`,`role`) VALUES
+		('mkyianyt', 'mariankyianytsia@gmail.com', '6e3cc936afbb78d3aafc48bdc65fe9a4313b7bc1393dc04cc4f83861228df3d5e79873045ed879ab15397937915cfae6bfa8b12a8d7576c0aff02e98acedb682', '/template/img/avatars/nopic.png', NULL, 1, 1);

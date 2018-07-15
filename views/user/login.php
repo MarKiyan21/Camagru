@@ -1,12 +1,16 @@
 <?php include (ROOT.'/views/layouts/header.php');?>
 
 <div class="wrapper">
-	<div class="container">
+	<div <?php if($isActive): ?> style="display: none;" <?php endif; ?> >
+		<h1>Please activate your account</h1>
+	</div>
+	
+	<div class="container" <?php if(!$isActive): ?> style="display: none;" <?php endif; ?> >
 		<h1>Welcome back</h1>
-		<form id="login-form">
-			<input id="nickname" type="text" placeholder="Username">
-			<input id="password" type="password" placeholder="Password">
-			<button id="login-button" type="submit">Login</button>
+		<form id="login-form" action="#" method="post">
+			<input id="nick" class="<?php echo $erLogin ?>" type="text" name="login" value="<?php echo $login ?>" placeholder="Username" required>
+			<input id="password" class="<?php echo $erPass ?>" type="password" name="pass" placeholder="Password" required>
+			<button id="login-button" type="submit" name="submit">Login</button>
 		</form>
 	</div>
 	
