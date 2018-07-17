@@ -100,9 +100,10 @@ form input:hover {
 }
 
 form input:focus {
-  background-color: white;
+/*   background-color: white; */
   width: 300px;
-  color: #1427d4;
+/*   color: #1427d4; */
+  color: black;
 }
 
 form button {
