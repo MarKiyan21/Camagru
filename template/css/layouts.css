@@ -1,3 +1,34 @@
+.navbar {
+	background-color: #3b5999;
+}
+
+.navbar-brand {
+	position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
+
+.navbar-default a {
+	color: #fff !important;
+	text-decoration: none;
+}
+
+.navbar-default a:hover {
+	color: #4c75a3 !important;
+}
+
+footer .container-fluid {
+    padding-right: 25px;
+    padding-top: 15px;
+}
+
+
+
+
+
+
+/*
 nav {
 	width: 100%;
 }
@@ -124,3 +155,4 @@ a:hover {
 .footer small {
 	margin-right: 20px;
 }
+*/

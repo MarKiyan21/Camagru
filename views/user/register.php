@@ -25,9 +25,9 @@
 	</div>
 -->
 	
-	<form>
-		<div class="form-group col-md-6 col-xs-6 col-xs-offset-3 col-md-offset-3 has-success has-feedback">
-			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" describedby="inputSuccess2Status">
+	<form action="#" method="post">
+		<div class="form-group col-md-6 col-xs-6 col-xs-offset-3 col-md-offset-3 has-success">
+			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
 			<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
 			<span id="inputSuccess2Status" class="sr-only">(success)</span>
 		</div>
@@ -38,7 +38,7 @@
 			<button type="submit" class="btn btn-default">Submit</button>
 		</div>
 	</form>
-<!--
+
 	<ul class="bg-bubbles">
 		<li></li>
 		<li></li>
@@ -51,7 +51,7 @@
 		<li></li>
 		<li></li>
 	</ul>
--->
+
 <!-- </div> -->
 
 <?php include ROOT.'/views/layouts/footer.php';?>
