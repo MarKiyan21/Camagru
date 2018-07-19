@@ -75,24 +75,30 @@ class UserController {
 				return false;
 			}
 			if (self::isLoginExist(trim($_POST['login']))) {
-				$erLogin = "incorrect";
+				$erLogin = "has-error";
 				$login = trim(htmlspecialchars($_POST['login']));
 				$email = trim(htmlspecialchars($_POST['email']));
-			} else {}
+			} else {
+				$erLogin = "has-success";
+			}
 			
 			if (!self::isEmailValid(trim($_POST['email'])) || Users::getUserByEmail(trim(strtolower(htmlspecialchars($_POST['email']))))) {
-				$erEmail = "incorrect";
+				$erEmail = "has-error";
 				$login = trim(htmlspecialchars($_POST['login']));
 				$email = trim(htmlspecialchars($_POST['email']));
-			} else {}
+			} else {
+				$erEmail = "has-success";
+			}
 			
 			if ($_POST['newpass'] !== $_POST['confpass']) {
-				$erPass = "incorrect";
+				$erPass = "has-error";
 				$login = trim(htmlspecialchars($_POST['login']));
 				$email = trim(htmlspecialchars($_POST['email']));
-			} else {}
+			} else {
+				$erPass = "has-success";
+			}
 
-			if (empty($erLogin) && empty($erEmail) && empty($erPass)) {
+			if ($erLogin === "has-success" && $erEmail === "has-success" && $erPass === "has-success") {
 				
 				$login = trim(htmlspecialchars($_POST['login']));
 				$email = trim(strtolower(htmlspecialchars($_POST['email'])));
@@ -126,20 +132,24 @@ class UserController {
 				return false;
 			}
 			if (!self::isLoginExist(trim($_POST['login']))) {
-				$erLogin = "incorrect";
+				$erLogin = "has-error";
 				$login = trim(htmlspecialchars($_POST['login']));
-			} else {}
+			} else {
+				$erLogin = "has-success";
+			}
 			
 			if (!$this->isPassMatches(trim(htmlspecialchars($_POST['login'])), hash("whirlpool", $_POST['pass']))) {
-				$erPass = "incorrect";
+				$erPass = "has-error";
 				$login = trim(htmlspecialchars($_POST['login']));
-			} else {}
+			} else {
+				$erPass = "has-success";
+			}
 			
 			if (!$this->isActivate(trim(htmlspecialchars($_POST['login'])))) {
 				$isActive = false;
 			} else {}
 
-			if (empty($erLogin) && empty($erPass) && $isActive) {
+			if ($erLogin === "has-success" && $erPass === "has-success" && $isActive) {
 				
 				$login = trim(htmlspecialchars($_POST['login']));
 				$password = hash("whirlpool", $_POST['pass']);

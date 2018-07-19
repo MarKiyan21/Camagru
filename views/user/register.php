@@ -13,45 +13,27 @@
 		</form>
 	</div>
 -->
-<!--
-	<div class="container">
-		<div class="row">
-			<div class="col-md-9"><input id="nickname" class="<?php echo $erLogin ?>" type="text" name="login" value="<?php echo $login ?>" placeholder="Username" autocomplete="off" required></div>
-			<div class="col-md-9"><input id="email" class="<?php echo $erEmail ?>" type="text" name="email" value="<?php echo $email ?>" placeholder="Email" autocomplete="off" required></div>
-			<div class="col-md-9"><input id="new-password" class="<?php echo $erPass ?>" type="password" name="newpass" placeholder="Password" required></div>
-			<div class="col-md-9"><input id="conf-password" class="<?php echo $erPass ?>" type="password" name="confpass" placeholder="Confirm password" required></div>
-			<div class="col-md-9"><button id="register-button" type="submit" name="submit">Register</button></div>
-		</div>
-	</div>
--->
-	
+<div class="container-fluid">
 	<form action="#" method="post">
-		<div class="form-group col-md-6 col-xs-6 col-xs-offset-3 col-md-offset-3 has-success">
-			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-			<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-			<span id="inputSuccess2Status" class="sr-only">(success)</span>
+		<div class="form-group col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3 <?php echo $erLogin ?>">
+			<input id="nickname" class="form-control" type="text" name="login" value="<?php echo $login ?>" placeholder="Username" autocomplete="off" required>
 		</div>
-		<div class="form-group col-md-6 col-xs-6 col-xs-offset-3 col-md-offset-3">
-			<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		<div class="form-group col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3 <?php echo $erEmail ?>">
+			<input id="email" class="form-control" type="text" name="email" value="<?php echo $email ?>" placeholder="Email" autocomplete="off" required>
 		</div>
-		<div class="form-group col-md-6 col-md-offset-3">
-			<button type="submit" class="btn btn-default">Submit</button>
+		<div class="form-group col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3 <?php echo $erPass ?>">
+			<input id="new-password" class="form-control" type="password" name="newpass" placeholder="Password" required>
+		</div>
+		<div class="form-group col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3 <?php echo $erPass ?>">
+			<input id="conf-password" class="form-control" type="password" name="confpass" placeholder="Confirm password" required>
+		</div>
+		<div class="form-group col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
+			<button id="register-button" class="btn btn-info" type="submit" name="submit">Register</button>
 		</div>
 	</form>
-
-	<ul class="bg-bubbles">
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-		<li></li>
-	</ul>
+</div>
 
 <!-- </div> -->
+<script src="/template/js/register.js"></script>
 
 <?php include ROOT.'/views/layouts/footer.php';?>

@@ -1,5 +1,5 @@
 .navbar {
-	background-color: #3b5999;
+	background-color: #007bb6;
 }
 
 .navbar-brand {
@@ -9,13 +9,17 @@
     display: block;
 }
 
-.navbar-default a {
+.container-fluid a {
 	color: #fff !important;
 	text-decoration: none;
 }
 
-.navbar-default a:hover {
-	color: #4c75a3 !important;
+.container-fluid a:hover {
+	color: #039BE5 !important;
+}
+
+.container-fluid h3 {
+	text-align: center;
 }
 
 footer .container-fluid {
