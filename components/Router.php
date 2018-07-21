@@ -9,7 +9,7 @@ class Router {
         $this->routes = include($routesPath);
     }
 
-	public function error404() {
+	public static function error404() {
 		require_once(ROOT.'/views/error/404.php');
 		exit;
 	}
@@ -27,18 +27,18 @@ class Router {
 
 	private function checkPattern($uriPattern) {
 		switch ($uriPattern) {
-			case 'photos':
+			case '^photos$':
 				break;
 			
-			case 'user/login$':
-			case 'user/register$':
+			case '^user/login$':
+			case '^user/register$':
 				if (isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 	                $this->redirect("/");
 	            }
 	            break;
 	            
-	        case 'user/info/([A-Za-z0-9]*$)':
-	        case 'photos/([0-9]+)':
+// 	        case '^user/info/([A-Za-z0-9]*$)':
+	        case '^photos/([0-9]+$)':
 	        	if (!isset($_SESSION['user'])) {
 // 			        print_r("AFTER REDIRECT TO LOGIN, WHEN USER NONE AUTHORIZED");
 		            $this->redirect("/user/login");

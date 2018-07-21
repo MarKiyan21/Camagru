@@ -15,20 +15,4 @@
 
 </div>
 
-<!--
-<div class="wrapper">
-	<div>
-		<?php if ($status == "error"): ?>
-			<h1>Something went wrong!</h1>
-		<?php elseif ($status == "already"): ?>
-			<h1>Your account has already been activated before!</h1>
-		<?php else: ?>
-			<h1>Your account has been successfully activated!</h1>
-			<a id="start" href="/user/login">Let's start</a>
-		<?php endif; ?>
-		
-	</div>
-</div>
--->
-
 <?php include ROOT.'/views/layouts/footer.php';?>

@@ -1,9 +1,21 @@
+:root {
+  --primary: #007bb6;
+  --secondary: #7c4dff;
+  --accent: #5bc0de;
+  --accent-border: #46b8da;
+}
+
 body {
 	font-family: 'Roboto', sans-serif;
+	position: relative;
+	margin: 0;
+	padding-bottom: 6rem;
+	min-height: 100vh;
+	overflow-x: hidden;
 }
 
 .collage {
-	border: 1px solid #039BE5;
+	border: 1px solid var(--secondary);
 	border-radius: 3px;
 	height: 75vh;
 	overflow-y: scroll;
@@ -32,7 +44,7 @@ body {
 	margin-top: 8px;
 	margin-bottom: 8px;
 	vertical-align: middle;
-	border: 1px solid #039BE5;
+	border: 1px solid var(--secondary);
 	border-radius: 3px;
 }
 
@@ -42,18 +54,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 	font-size: 43px;
-    color: grey;
+    color: var(--secondary);
     position: absolute;
     display: block;
     transition: .3s;
 }
 
-.collage .column img:hover {
-	cursor: pointer;
-}
-
 .collage .column span:hover {
-	color: #039BE5;
+	color: var(--accent);
 	cursor: pointer;
 }
 
@@ -78,8 +86,8 @@ body {
 }
 
 .welcome span {
-	color: #039BE5;
-	border: 1px solid #039BE5;
+	color: var(--secondary);
+	border: 1px solid var(--secondary);
 	border-radius: 3px;
 	padding: 5px 40px;
 	font-size: 4vw;
@@ -94,6 +102,15 @@ body {
 }
 
 .description span a {
-	color: #039BE5;
+	color: var(--primary);
+	border: 1px solid var(--primary);
+	border-radius: 3px;
+	padding: 3px 10px;
 	text-decoration: none;
+	transition: .3s;
+}
+
+.description span a:hover {
+	color: var(--accent);
+	border-color: var(--accent-border);
 }

@@ -58,6 +58,24 @@ class UserController {
 	}
 	
 	public function actionInfo() {
+		$whoPage = explode("/", $_SERVER['PATH_INFO']);
+		$whoPage = end($whoPage);
+		
+		if (isset($_SESSION['user'])) {
+			$status = 1;
+			if ($_SESSION['user'] == $whoPage) {
+				$status = 2;
+			}
+		} else {
+			$status = 0;
+		}
+		
+		$user = Users::getUserByName($whoPage);
+		
+		if (empty($user)) {
+			Router::error404();
+		}
+		
 		require_once(ROOT.'/views/user/info.php');
 		
 		return true;

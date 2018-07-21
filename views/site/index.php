@@ -6,72 +6,33 @@
 		<div class="row">
 			
 			<div class="column">
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/1.jpeg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/2.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/3.jpeg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/4.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/5.jpeg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
+				<?php $i = 0; while ($i < count($lastPhotos)): ?>
+					<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
+						<img class="img-responsive" src="<?php echo $lastPhotos[$i]['path']; ?>">
+						<span onclick="showDetails(<?php echo $lastPhotos[$i]['image_id'] ?>)"><i class="im im-icon-Information"></i></span>
+					</div>
+				<?php $i += 3; ?>
+				<?php endwhile; ?>
 			</div>
 			
 			<div class="column">
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/6.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/7.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/8.jpeg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/9.jpeg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/10.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
+				<?php $i = 1; while ($i < count($lastPhotos)): ?>
+					<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
+						<img class="img-responsive" src="<?php echo $lastPhotos[$i]['path']; ?>">
+						<span onclick="showDetails(<?php echo $lastPhotos[$i]['image_id'] ?>)"><i class="im im-icon-Information"></i></span>
+					</div>
+				<?php $i += 3; ?>
+				<?php endwhile; ?>
 			</div>
 			
 			<div class="column">
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/11.jpeg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/12.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/13.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/14.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
-				<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
-					<img class="img-responsive" src="/template/img/15.jpg">
-					<span><i class="im im-icon-Information"></i></span>
-				</div>
+				<?php $i = 2; while ($i < count($lastPhotos)): ?>
+					<div class="pack" onmouseover="hover(this);" onmouseout="unhover(this);">
+						<img class="img-responsive" src="<?php echo $lastPhotos[$i]['path']; ?>">
+						<span onclick="showDetails(<?php echo $lastPhotos[$i]['image_id'] ?>)"><i class="im im-icon-Information"></i></span>
+					</div>
+				<?php $i += 3; ?>
+				<?php endwhile; ?>
 			</div>
 			
 		</div>
@@ -96,7 +57,7 @@
 				<?php if(!empty($_SESSION['user'])): ?>
 					<button class="btn btn-info" style="font-size: 20px;">Do Selfie</button>
 				<?php else: ?>
-					<span>You only need to <a href="/user/register">register</a> or <a href="/user/login">log in</a> to our site, designed by a great coder without a sense of design, but with a sense of humor</span>
+					<span>You only need to <a href="/user/register">register</a> or <a href="/user/login">log in</a> to our site, designed by a great coder without a sense of design, but with a sense of humor :))</span>
 				<?php endif; ?>
 				
 			</div>
