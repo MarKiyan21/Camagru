@@ -76,6 +76,8 @@ class UserController {
 			Router::error404();
 		}
 		
+		print_r($user);
+		
 		require_once(ROOT.'/views/user/info.php');
 		
 		return true;
