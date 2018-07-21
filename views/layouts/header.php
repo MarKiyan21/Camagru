@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" id="bulma" href="assets/css/bulma.css">
+	<link rel="stylesheet" type="text/css" href="/assets/libs/bulkit/css/icons.min.css">
 	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.png"/>
 	<link href="/template/css/style.css" rel="stylesheet" type="text/css">
 	<link href="/template/css/layouts.css" rel="stylesheet" type="text/css">
