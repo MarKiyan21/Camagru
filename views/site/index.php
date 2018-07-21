@@ -94,7 +94,7 @@
 			<div class="description col-md-12 col-sm-12 col-xs-12">
 				<span>Hello, dear <?php if(!empty($_SESSION['user'])):?><a href="/user/info/<?php echo $_SESSION['user']?>"><?php echo $_SESSION['user'];?></a> <?php else: ?>friend<?php endif; ?>! Do you want to do some <a href="/photos/">photos</a>?</span><br><br>
 				<?php if(!empty($_SESSION['user'])): ?>
-					<button class="btn btn-info" style="font-size: 20px;">Do some Photo</button>
+					<button class="btn btn-info" style="font-size: 20px;">Do Selfie</button>
 				<?php else: ?>
 					<span>You only need to <a href="/user/register">register</a> or <a href="/user/login">log in</a> to our site, designed by a great coder without a sense of design, but with a sense of humor</span>
 				<?php endif; ?>
