@@ -21,6 +21,10 @@ body {
 	overflow-y: scroll;
 }
 
+.horizontal {
+	height: 60vh;
+}
+
 .collage .row {
 	display: flex;
 	flex-wrap: wrap;
@@ -31,6 +35,12 @@ body {
 .collage .column {
 	flex: 33.3%;
 	max-width: 33.3%;
+	padding: 0 4px;
+}
+
+.horizontal .column {
+	flex: 20%;
+	max-width: 20%;
 	padding: 0 4px;
 }
 
@@ -61,6 +71,38 @@ body {
 }
 
 .collage .column span:hover {
+	color: var(--accent);
+	cursor: pointer;
+}
+
+.avatar {
+/* 	width: 8vw; */
+	position: relative;
+	text-align: center;
+}
+
+.avatar img {
+	opacity: 1;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	vertical-align: middle;
+	border: 1px solid var(--secondary);
+	border-radius: 50%;
+}
+
+.avatar span {
+	opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	font-size: 43px;
+    color: var(--secondary);
+    position: absolute;
+    display: block;
+    transition: .3s;
+}
+
+.avatar span:hover {
 	color: var(--accent);
 	cursor: pointer;
 }
@@ -113,4 +155,10 @@ body {
 .description span a:hover {
 	color: var(--accent);
 	border-color: var(--accent-border);
+}
+
+.info span, .additional span {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
