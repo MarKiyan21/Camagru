@@ -209,7 +209,7 @@ class UserController {
 	
 	public function actionLogout() {
 		unset($_SESSION['user']);
-// 		require_once(ROOT.'/views/user/logout.php');
+		require_once(ROOT.'/views/user/logout.php');
 		
 		return true;
 	}
