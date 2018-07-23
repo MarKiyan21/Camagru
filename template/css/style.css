@@ -1,7 +1,7 @@
 :root {
   --primary: #007bb6;
-  --secondary: #7c4dff;
-  --accent: #5bc0de;
+  --secondary: #5bc0de;
+  --accent: #7c4dff;
   --accent-border: #46b8da;
 }
 
@@ -15,9 +15,8 @@ body {
 }
 
 .collage {
-	border: 1px solid var(--secondary);
 	border-radius: 3px;
-	height: 75vh;
+	height: 81vh;
 	overflow-y: scroll;
 }
 
@@ -54,7 +53,6 @@ body {
 	margin-top: 8px;
 	margin-bottom: 8px;
 	vertical-align: middle;
-	border: 1px solid var(--secondary);
 	border-radius: 3px;
 }
 
@@ -76,36 +74,45 @@ body {
 }
 
 .avatar {
-/* 	width: 8vw; */
+	width: 8vw;
 	position: relative;
 	text-align: center;
 }
 
 .avatar img {
 	opacity: 1;
-	margin-top: 8px;
-	margin-bottom: 8px;
-	vertical-align: middle;
 	border: 1px solid var(--secondary);
 	border-radius: 50%;
 }
 
 .avatar span {
 	opacity: 0;
-    top: 50%;
-    left: 50%;
+	top: 50%;
     transform: translate(-50%, -50%);
-	font-size: 43px;
+	font-size: 2vw;
     color: var(--secondary);
     position: absolute;
     display: block;
     transition: .3s;
 }
 
+.do-photo {
+    left: 25%;
+    right: auto;
+}
+
+.do-upload {
+    right: 1%;
+    left: auto;
+}
+
+
 .avatar span:hover {
 	color: var(--accent);
 	cursor: pointer;
 }
+
+
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {
@@ -128,11 +135,11 @@ body {
 }
 
 .welcome span {
-	color: var(--secondary);
-	border: 1px solid var(--secondary);
+	color: var(--primary);
+	border: 1px solid var(--primary);
 	border-radius: 3px;
 	padding: 5px 40px;
-	font-size: 4vw;
+	font-size: 3vw;
 }
 
 .description {
@@ -140,14 +147,14 @@ body {
 }
 
 .description span {
-	font-size: 3vw;
+	font-size: 2vw;
 }
 
 .description span a {
 	color: var(--primary);
 	border: 1px solid var(--primary);
 	border-radius: 3px;
-	padding: 3px 10px;
+	padding: 1px 10px;
 	text-decoration: none;
 	transition: .3s;
 }

@@ -48,12 +48,12 @@
 			
 		</div>
 		
-		<br>
+		<hr>
 		
 		<div class="row">
 			
 			<div class="description col-md-12 col-sm-12 col-xs-12">
-				<span>Hello, dear <?php if(!empty($_SESSION['user'])):?><a href="/user/info/<?php echo $_SESSION['user']?>"><?php echo $_SESSION['user'];?></a> <?php else: ?>friend<?php endif; ?>! Do you want to do some <a href="/photos/">photos</a>?</span><br><br>
+				<span>Hello, dear <?php if(!empty($_SESSION['user'])):?><a href="/user/info/<?php echo $_SESSION['user']?>"><?php echo $_SESSION['user'];?></a> <?php else: ?>friend<?php endif; ?>! Do you want to do some <a href="/photos/">photos</a>?</span><hr>
 				<?php if(!empty($_SESSION['user'])): ?>
 					<button class="btn btn-info" style="font-size: 20px;">Do Selfie</button>
 				<?php else: ?>
