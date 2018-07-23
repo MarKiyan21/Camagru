@@ -15,3 +15,7 @@ function unhover(element) {
 function showDetails(id) {
 	window.location.pathname = "/photos/" + id;
 }
+
+function doPhoto() {
+	window.location.pathname = "/user/selfie";
+}

@@ -1,50 +1,37 @@
 <?php include (ROOT.'/views/layouts/header.php');?>
 
-<div class="row">
-	<div class="col-md-6 col-sm-6 col-xs-6">
-	  
-		<div class="col-md-4 col-sm-4 col-xs-4 col-sm-offset-2 col-md-offset-2 col-xs-offset-2">
-			<div class="avatar" onmouseover="hover3(this);" onmouseout="unhover3(this);">
-				<img class="img-responsive" src="<?php echo $user['main']['user_pic']; ?>">
-				<span class="do-photo" onclick="doPhoto()"><i class="im im-icon-Camera"></i></span>
-				<span class="do-upload"><i class="im im-icon-Upload-toCloud"></i></span>
-			</div>
+<div class="container">
+
+	<div class="profile">
+
+		<div class="avatar profile-image" onmouseover="hover3(this);" onmouseout="unhover3(this);">
+
+			<img src="<?php echo $user['main']['user_pic']; ?>">
+			<span class="do-photo" onclick="doPhoto()"><i class="im im-icon-Camera"></i></span>
+			<span class="do-upload"><i class="im im-icon-Upload-toCloud"></i></span>
+
 		</div>
-		
-		<div class="info col-md-4 col-sm-4 col-xs-4">
-			
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<span>Marian Kyianytsia</span>
-			</div>
-			
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<span>mkyianyt</span>
-			</div>
-			
-			<div class="col-md-12 col-sm-12 col-xs-12">
-				<span><i class="sl sl-icon-settings"></i></span>
-			</div>
-			
+
+		<div class="profile-user-settings">
+
+			<h1 class="profile-user-name"><?php echo $user['main']['username']; ?></h1>
+
+			<div class="profile-edit-btn">Edit Profile</div>
+
 		</div>
-	  
+
+		<div class="profile-stats">
+
+			<ul>
+				<li><span class="profile-stat-count"><?php echo($user['main']['photo_count']) ?></span> photos</li>
+				<li><span class="profile-stat-count"><?php echo($user['main']['like_count']) ?></span> likes</li>
+				<li><span class="profile-stat-count"><?php echo($user['main']['comment_count']) ?></span> comments</li>
+			</ul>
+
+		</div>
+
 	</div>
-	
-	<div class="additional col-md-4 col-sm-12 col-xs-12">
-		
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<span><?php echo($user['main']['photo_count']) ?> photos</span>
-		</div>
-		
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<span><?php echo($user['main']['like_count']) ?> likes</span>
-		</div>
-		
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<span><?php echo($user['main']['comment_count']) ?> comments</span>
-		</div>
-		
-	</div>
-	
+
 </div>
 <br>
 <div class="row">
