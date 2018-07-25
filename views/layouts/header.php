@@ -50,11 +50,11 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<?php if(empty($_SESSION['user'])): ?>
-						<li><a href="/user/login">Sign In</a></li>
-						<li><a href="/user/register">Sign Out</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/login">Sign In</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/register">Sign Out</a></li>
 					<?php else: ?>
-						<li><a href="/user/info/<?php echo $_SESSION['user'] ?>"><?php echo $_SESSION['user'] ?></a></li>
-						<li><a href="/user/logout">Logout</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/info/<?php echo $_SESSION['user'] ?>"><?php echo $_SESSION['user'] ?></a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
 					<?php endif; ?>
 					
 				</ul>

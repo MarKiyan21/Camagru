@@ -1,32 +1,31 @@
-<body>
 <?php include (ROOT.'/views/layouts/header.php');?>
 
 <style>
-#main {
-	flex-grow: 1;
-	height: 100%;
-	min-width: 300px;
+
+.comment-area {
+	width: 80%;
+	margin: 0 auto;
 	background-color: #E7EDED;
-	width: 600px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
 
-.avatar img{
+#messages .avatar img{
 	width: 40px;
 	height: 40px;
 	border-radius: 100%;
+	border: 1px solid #007bb6;
 }
 
-#main footer{
+.comment-area .input{
 	background-color: #fff;
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
 }
 
-#main footer textarea{
+.comment-area textarea{
 	flex-grow: 2;
 	margin: 0 10px;
 	resize: none;
@@ -35,32 +34,27 @@
 	height: 20px;
 }
 
-#main footer textarea:focus{
+.comment-area textarea:focus{
 	outline: none;	
 }
 
-#main footer i{
+.comment-area i{
 	color: #c0c0c0;
 	cursor: pointer;
 }
 
 #messages{
 	overflow: auto;
-	flex-grow: 2;
 	padding: 10px;
 }
 
-#messages article{
+#messages div{
 	display: flex;
 	justify-content: flex-start;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 
-#messages article .avatar{
-	margin-right: 10px;
-}
-
-.msg {
+.msg{
 	display: flex;
 	justify-content: space-between;
 }
@@ -73,57 +67,77 @@
 	border-color: transparent #ffffff transparent transparent;
 }
 
-.msg_inner {
+.msg_inner{
 	background-color: #fff;
-	width: 100%;
-	min-width: 30%;
 	padding: 15px 10px;
-	border-radius: 0 4px 4px 4px;
+	border-radius: 3px;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 	text-align: left;
 }
 
 </style>
 
-<section id="main">
-    <section id="messages">
+<div class="comment-area">
+    <div id="messages">
 
-        <article>
+        <div>
             <div class="avatar">
-                <img alt="avatar" src="https://goo.gl/1D6wCQ" />
+                <img alt="avatar" src="/template/img/avatars/nopic.png" />
             </div>
             <div class="msg">
                 <div class="tri"></div>
                 <div class="msg_inner">Hi sweetie</div>
             </div>
-        </article>
+        </div>
 
-        <article>
+        <div>
             <div class="avatar">
-                <img alt="avatar" src="https://goo.gl/1D6wCQ" />
+                <img alt="avatar" src="/template/img/avatars/nopic.png" />
             </div>
             <div class="msg">
                 <div class="tri"></div>
-                <div class="msg_inner">Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!Yaaaay! Bring me some chocolate!</div>
+                <div class="msg_inner">Hello sweetheart. I'm coming home sooner today.</div>
             </div>
-        </article>
+        </div>
 
-        <article>
+        <div>
             <div class="avatar">
-                <img alt="avatar" src="https://goo.gl/1D6wCQ" />
+                <img alt="avatar" src="/template/img/avatars/nopic.png" />
+            </div>
+            <div class="msg">
+                <div class="tri"></div>
+                <div class="msg_inner">Yaaaay! Bring me some chocolate!</div>
+            </div>
+        </div>
+
+        <div>
+            <div class="avatar">
+                <img alt="avatar" src="/template/img/avatars/nopic.png" />
+            </div>
+            <div class="msg">
+                <div class="tri"></div>
+                <div class="msg_inner">Sure.</div>
+            </div>
+        </div>
+
+        <div>
+            <div class="avatar">
+                <img alt="avatar" src="/template/img/avatars/nopic.png" />
             </div>
             <div class="msg">
                 <div class="tri"></div>
                 <div class="msg_inner">Ok. Bye!</div>
             </div>
-        </article>
+        </div>
+        
+        <div class="input">
+	        <i class="material-icons">attach_file</i>
+	        <textarea placeholder="Say something..."></textarea><i class="material-icons">send</i>
+    	</div>
 
-    </section>
-    <footer>
-        <i class="material-icons">attach_file</i>
-        <textarea placeholder="Say something..."></textarea><i class="material-icons">send</i>
-    </footer>
-</section>
+    </div>
+    	
+</div>
 
 <?php include (ROOT.'/views/layouts/footer.php');?>
 </body>

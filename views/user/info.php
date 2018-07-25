@@ -17,6 +17,8 @@
 			<h1 class="profile-user-name"><?php echo $user['main']['username']; ?></h1>
 
 			<div class="profile-edit-btn">Edit Profile</div>
+			
+			<div class="profile-settings-btn"><i class="im im-icon-File-Settings"></i></div>
 
 		</div>
 

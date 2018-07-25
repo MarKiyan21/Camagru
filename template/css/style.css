@@ -73,19 +73,18 @@ body {
 	cursor: pointer;
 }
 
-.avatar {
-	width: 8vw;
+.profile .avatar {
 	position: relative;
 	text-align: center;
 }
 
-.avatar img {
+.profile .avatar img {
 	opacity: 1;
 	border: 1px solid var(--secondary);
 	border-radius: 50%;
 }
 
-.avatar span {
+.profile .avatar span {
 	opacity: 0;
 	top: 50%;
     transform: translate(-50%, -50%);
@@ -102,12 +101,12 @@ body {
 }
 
 .do-upload {
-    right: 30%;
+    right: 34%;
     left: auto;
 }
 
 
-.avatar span:hover {
+.profile .avatar span:hover {
 	color: var(--accent);
 	cursor: pointer;
 }
@@ -209,6 +208,13 @@ body {
 	padding: 0 2.4rem;
 	margin-left: 2rem;
 	cursor: pointer;
+}
+
+.profile-settings-btn {
+	display: inline-block;
+	font-size: 2rem;
+	cursor: pointer;
+	margin-left: 1rem;
 }
 
 .profile-stats {
