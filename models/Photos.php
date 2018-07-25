@@ -9,14 +9,14 @@ class Photos {
 
             $db = Db::getConnection();
 
-            $result = $db->query('SELECT * FROM news WHERE id="' . $id . '"');
+            $result = $db->query('SELECT * FROM images WHERE image_id="' . $id . '"');
             
             // $result->setFetchMode(PDO::FETCH_NUM);
             $result->setFetchMode(PDO::FETCH_ASSOC);
 
-            $newsItem = $result->fetch();
+            $photo = $result->fetch();
 
-            return $newsItem;
+            return $photo;
         }
     }
     
