@@ -44,9 +44,14 @@
 			
 			<div class="column">
 				<?php $i = 0; while ($i < count($user['photos'])): ?>
-					<div class="pack" onmouseover="hover2(this);" onmouseout="unhover2(this);">
+					<div class="gallery-item">
 						<img class="img-responsive" src="<?php echo $user['photos'][$i]['path']; ?>">
-						<span onclick="showDetails(<?php echo $user['photos'][$i]['image_id'] ?>)"><i class="im im-icon-Information"></i></span>
+						<div class="gallery-item-info">
+							<ul>
+								<li class="gallery-item-likes"><i class="im im-icon-Heart-2"></i> 56</li>
+								<li class="gallery-item-comments"><i class="im im-icon-Speach-Bubble"></i> 2</li>
+							</ul>
+						</div>
 					</div>
 				<?php $i += 5; ?>
 				<?php endwhile; ?>
@@ -54,9 +59,14 @@
 			
 			<div class="column">
 				<?php $i = 1; while ($i < count($user['photos'])): ?>
-					<div class="pack" onmouseover="hover2(this);" onmouseout="unhover2(this);">
+					<div class="gallery-item">
 						<img class="img-responsive" src="<?php echo $user['photos'][$i]['path']; ?>">
-						<span onclick="showDetails(<?php echo $user['photos'][$i]['image_id'] ?>)"><i class="im im-icon-Information"></i></span>
+						<div class="gallery-item-info">
+							<ul>
+								<li class="gallery-item-likes"><i class="im im-icon-Heart-2"></i> 56</li>
+								<li class="gallery-item-comments"><i class="im im-icon-Speach-Bubble"></i> 2</li>
+							</ul>
+						</div>
 					</div>
 				<?php $i += 5; ?>
 				<?php endwhile; ?>
@@ -64,9 +74,14 @@
 			
 			<div class="column">
 				<?php $i = 2; while ($i < count($user['photos'])): ?>
-					<div class="pack" onmouseover="hover2(this);" onmouseout="unhover2(this);">
+					<div class="gallery-item">
 						<img class="img-responsive" src="<?php echo $user['photos'][$i]['path']; ?>">
-						<span onclick="showDetails(<?php echo $user['photos'][$i]['image_id'] ?>)"><i class="im im-icon-Information"></i></span>
+						<div class="gallery-item-info">
+							<ul>
+								<li class="gallery-item-likes"><i class="im im-icon-Heart-2"></i> 56</li>
+								<li class="gallery-item-comments"><i class="im im-icon-Speach-Bubble"></i> 2</li>
+							</ul>
+						</div>
 					</div>
 				<?php $i += 5; ?>
 				<?php endwhile; ?>
@@ -74,9 +89,14 @@
 			
 			<div class="column">
 				<?php $i = 3; while ($i < count($user['photos'])): ?>
-					<div class="pack" onmouseover="hover2(this);" onmouseout="unhover2(this);">
+					<div class="gallery-item">
 						<img class="img-responsive" src="<?php echo $user['photos'][$i]['path']; ?>">
-						<span onclick="showDetails(<?php echo $user['photos'][$i]['image_id'] ?>)"><i class="im im-icon-Information"></i></span>
+						<div class="gallery-item-info">
+							<ul>
+								<li class="gallery-item-likes"><i class="im im-icon-Heart-2"></i> 56</li>
+								<li class="gallery-item-comments"><i class="im im-icon-Speach-Bubble"></i> 2</li>
+							</ul>
+						</div>
 					</div>
 				<?php $i += 5; ?>
 				<?php endwhile; ?>
@@ -84,9 +104,14 @@
 			
 			<div class="column">
 				<?php $i = 4; while ($i < count($user['photos'])): ?>
-					<div class="pack" onmouseover="hover2(this);" onmouseout="unhover2(this);">
+					<div class="gallery-item">
 						<img class="img-responsive" src="<?php echo $user['photos'][$i]['path']; ?>">
-						<span onclick="showDetails(<?php echo $user['photos'][$i]['image_id'] ?>)"><i class="im im-icon-Information"></i></span>
+						<div class="gallery-item-info">
+							<ul>
+								<li class="gallery-item-likes"><i class="im im-icon-Heart-2"></i> 56</li>
+								<li class="gallery-item-comments"><i class="im im-icon-Speach-Bubble"></i> 2</li>
+							</ul>
+						</div>
 					</div>
 				<?php $i += 5; ?>
 				<?php endwhile; ?>

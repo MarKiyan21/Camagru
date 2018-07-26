@@ -123,7 +123,7 @@ class UserController {
 			}
 
 			if ($erLogin === "has-success" && $erEmail === "has-success" && $erPass === "has-success") {
-				
+				print_r("SUCCESS");
 				$login = trim(htmlspecialchars($_POST['login']));
 				$email = trim(strtolower(htmlspecialchars($_POST['email'])));
 				$password = hash("whirlpool", $_POST['newpass']);
@@ -134,7 +134,7 @@ class UserController {
 				$message = "Hi, " . $login . "!\nPlease activate your account for <a href='http://" . $_SERVER['HTTP_HOST'] . "/user/activate/". $token . "/" . $email . "'> this link</a>.\n";
 				self::sendMail($email, "Registration", $message);
 // 				$_SESSION['user'] = $login;
-				$this->redirect('/user/login');
+// 				$this->redirect('/user/login');
 		
 				return true;
 			}

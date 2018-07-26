@@ -330,7 +330,7 @@ body {
 	justify-content: space-between;
 }
 
-.messages .avatar img{
+.messages .avatar img {
 	width: 40px;
 	height: 40px;
 	border-radius: 100%;
@@ -338,36 +338,36 @@ body {
 	cursor: pointer;
 }
 
-.comment-area .input{
+.comment-area .input {
 	background-color: #f2f8f8;
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
 }
 
-.input textarea{
+.input textarea {
 	resize: none;
 }
 
-.messages{
+.messages {
 	overflow: auto;
 	padding: 10px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.messages div{
+.messages div {
 	display: flex;
 	justify-content: flex-start;
 	margin-bottom: 5px;
 }
 
-.msg{
+.msg {
 	display: flex;
 	justify-content: space-between;
 }
 
-.msg .tri{
+.msg .tri {
 	width: 0;
 	height: 0;
 	border-style: solid;
@@ -375,7 +375,7 @@ body {
 	border-color: transparent #ffffff transparent transparent;
 }
 
-.msg_inner{
+.msg_inner {
 	background-color: #fff;
 	padding: 15px 10px;
 	border-radius: 3px;
@@ -386,4 +386,42 @@ body {
 .big-image {
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.gallery-item {
+	position: relative;
+	flex: 1 0 22rem;
+	color: #fff;
+	cursor: pointer;
+	width: 87%;
+}
+
+.gallery-item .im {
+	font-weight: 1000;
+}
+
+.gallery-item:hover .gallery-item-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item-info {
+	display: none;
+}
+
+.gallery-item-info li {
+	display: inline-block;
+	font-size: 1.7rem;
+	font-weight: 600;
+}
+
+.gallery-item-likes,
+.gallery-item-comments {
+	margin-right: 2.2rem;
 }
