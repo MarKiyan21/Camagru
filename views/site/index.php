@@ -68,6 +68,6 @@
 	
 </div>
 
-<script src="/template/js/main.js"></script>
+<script src="/template/js/site.js"></script>
 
 <?php include ROOT.'/views/layouts/footer.php';?>

@@ -33,6 +33,7 @@ class Photos {
             $lastListPhotos[$i]['image_id'] = $row['image_id'];
             $lastListPhotos[$i]['user_id'] = $row['user_id'];
             $lastListPhotos[$i]['likes'] = $row['likes'];
+            $lastListPhotos[$i]['comments'] = $row['comments'];
             $lastListPhotos[$i]['path'] = $row['path'];
             $lastListPhotos[$i]['date'] = $row['date'];
             $i++;
@@ -66,6 +67,7 @@ class Photos {
             $lastListPhotos[$i]['image_id'] = $row['image_id'];
             $lastListPhotos[$i]['user_id'] = $row['user_id'];
             $lastListPhotos[$i]['likes'] = $row['likes'];
+            $lastListPhotos[$i]['comments'] = $row['comments'];
             $lastListPhotos[$i]['path'] = $row['path'];
             $lastListPhotos[$i]['date'] = $row['date'];
             $i++;

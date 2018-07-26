@@ -77,10 +77,10 @@ class UserController {
 		}
 		
 		$user['main'] = $ifUserExist;
-		$user['photos'] = Photos::getPhotosByUserID($user['main']['user_id']);
 		$user['main']['like_count'] = Activity::getLikesCount($user['main']['user_id']);
 		$user['main']['comment_count'] = Activity::getCommentsCount($user['main']['user_id']);
 		$user['main']['photo_count'] = Photos::getPhotosCount($user['main']['user_id']);
+		$user['photos'] = Photos::getPhotosByUserID($user['main']['user_id']);
 		
 		require_once(ROOT.'/views/user/info.php');
 		
