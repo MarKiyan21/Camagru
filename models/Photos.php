@@ -53,13 +53,17 @@ class Photos {
         return $count['COUNT(*)'];
     }
 
-    public static function getPhotosList() {
+    public static function getPhotosList($limit=false) {
         
         $db = Db::getConnection();
 
         $lastListPhotos = array();
 
-        $result = $db->query('SELECT * FROM images ORDER BY date DESC LIMIT 15');
+        if ($limit) {
+	        $result = $db->query('SELECT * FROM images ORDER BY date DESC LIMIT 15');
+        } else {
+	        $result = $db->query('SELECT * FROM images ORDER BY date DESC');
+        }
 
         $i = 0;
         

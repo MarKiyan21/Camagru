@@ -3,9 +3,11 @@
   --secondary: #5bc0de;
   --accent: #7c4dff;
   --accent-border: #46b8da;
+  --ingredient: linear-gradient(to right, #4b6cb7, #182848);
 }
 
 body {
+	z-index: 2;
 	font-family: 'Roboto', sans-serif;
 	position: relative;
 	margin: 0;
@@ -117,17 +119,59 @@ body {
 }
 
 .do-upload {
-    right: 34%;
+    right: 33%;
     left: auto;
 }
 
+#fileid {
+	display: none;
+}
 
 .profile .avatar span:hover {
 	color: var(--accent);
 	cursor: pointer;
 }
 
+.preview-block {
+	width: 50%;
+	margin: 0 auto;
+	display: none;
+	position: relative;
+	text-align: center;
+}
 
+.cancelUpload,
+.savePhoto {
+	opacity: 0;
+	top: 50%;
+    transform: translate(-50%, -50%);
+	font-size: 6vw;
+    color: #d81b60;
+    position: absolute;
+    display: block;
+    transition: .3s;
+}
+
+.cancelUpload:hover,
+.savePhoto:hover {
+	color: #b71c1c;
+	cursor: pointer;
+}
+
+.savePhoto:hover {
+	color: #1b5e20;
+}
+
+.cancelUpload {
+    left: 30%;
+    right: auto;
+}
+
+.savePhoto {
+	color: #43a047;
+    right: 20%;
+    left: auto;
+}
 
 /* Responsive layout - makes a two column-layout instead of four columns */
 @media screen and (max-width: 800px) {

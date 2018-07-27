@@ -16,6 +16,6 @@ function showDetails(id) {
 	window.location.pathname = "/photos/" + id;
 }
 
-function doPhoto() {
+function doSelfie() {
 	window.location.pathname = "/user/selfie";
 }

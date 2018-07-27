@@ -7,8 +7,9 @@
 		<div class="avatar profile-image" onmouseover="hover3(this);" onmouseout="unhover3(this);">
 
 			<img src="<?php echo $user['main']['user_pic']; ?>">
-			<span class="do-photo" onclick="doPhoto()"><i class="im im-icon-Camera"></i></span>
+			<span class="do-photo" onclick="doSelfie()"><i class="im im-icon-Camera"></i></span>
 			<span class="do-upload"><i class="im im-icon-Upload-toCloud"></i></span>
+			<input id='fileid' type="file" onchange="previewFile();" accept="image/*">
 
 		</div>
 
@@ -36,6 +37,13 @@
 
 </div>
 <br>
+
+<div class="preview-block" onmouseover="hover3(this);" onmouseout="unhover3(this);">
+	<img class="img-responsive" id="preview" src="" alt="Image preview...">
+	<span class="cancelUpload" onclick="cancelUpload()"><i class="im im-icon-Close"></i></span>
+	<span class="savePhoto" onclick="setAvatar()"><i class="im im-icon-Profile"></i></span>
+</div>
+
 <div class="row">
 	
 	<div class="collage horizontal col-md-10 col-sm-10 col-xs-10 col-sm-offset-1 col-md-offset-1 col-xs-offset-1">

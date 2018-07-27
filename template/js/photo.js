@@ -12,6 +12,10 @@ function unhover(element) {
 	styleSpan.opacity = 0;
 }
 
+function showDetails(id) {
+	window.location.pathname = "/photos/" + id;
+}
+
 function likePhoto(element, id) {
 	if (element.classList.contains('heart-like')) {
 		element.classList.remove("heart-like");

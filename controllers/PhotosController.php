@@ -3,8 +3,7 @@
 class PhotosController {
     public function actionIndex() {
         
-        $newsList = array();
-//         $newsList = News::getNewsList();
+        $allPhotos = Photos::getPhotosList();
 
         require_once(ROOT.'/views/photos/index.php');
 

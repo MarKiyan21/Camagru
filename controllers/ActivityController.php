@@ -1,96 +1,9 @@
 <?php
 	
-class UserController {
+class ActivityController {
 	
-	private function redirect($url, $statusCode = 303) {
-		header('Location: ' . $url, true, $statusCode);
-		die();
-	}
-	
-	public static function isLoginExist($login) {
-		if (!empty(Users::getUserByName($login))) {
-			return true;
-		}
-		return false;
-	}
-	
-	public static function isLoginValid($login) {
-		if (!preg_match("/^[A-Za-z0-9]{3,20}$/i", $login))
-			return false;
-		return true;
-	}
-	
-	public static function isEmailValid($email) {
-		if (!preg_match("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/", $email))
-			return false;
-		return true;
-	}
-	
-	public static function isPassMatches($login, $password) {
-		$user = Users::getUserByName($login);
-		if (empty($user) || $user['password'] !== $password) {
-			return false;
-		}
-		return true;
-		
-	}
-	
-	public static function isActivate($login) {
-		$user = Users::getUserByName($login);
-		if (empty($user) || $user['activate'] != 1) {
-			return false;
-		}
-		return true;
-	}
-	
-	public static function sendMail($to, $subject, $message) {
-		$encoding = "utf-8";
-		// Set preferences for Subject field
-		$subject_preferences = array(
-			"input-charset" => "utf-8",
-			"output-charset" => "utf-8",
-			"line-length" => 76,
-			"line-break-chars" => "\r\n"
-		);
-		// Set mail header
-		$header = "Content-type: text/html; charset=" . $encoding . " \r\n";
-		$header .= "From: Marian <no-reply@gmail.com> \r\n";
-		$header .= "MIME-Version: 1.0 \r\n";
-		$header .= "Content-Transfer-Encoding: 8bit \r\n";
-		$header .= "Date: ".date("r (T)")." \r\n";
-		$header .= iconv_mime_encode("Subject", $subject, $subject_preferences);
-		// Send mail
-		mail($to, $subject, $message, $header);
-	}
-	
-	public function actionInfo() {
-		$whoPage = explode("/", $_SERVER['PATH_INFO']);
-		$whoPage = end($whoPage);
-		
-		if (isset($_SESSION['user'])) {
-			$status = 1;
-			if ($_SESSION['user'] == $whoPage) {
-				$status = 2;
-			}
-		} else {
-			$status = 0;
-		}
-		
-		$ifUserExist = Users::getUserByName($whoPage);
-		
-		if (empty($ifUserExist)) {
-			Router::error404();
-		}
-		
-		$user['main'] = $ifUserExist;
-		$user['main']['like_count'] = Activity::getLikesCount($user['main']['user_id']);
-		$user['main']['comment_count'] = Activity::getCommentsCount($user['main']['user_id']);
-		$user['main']['photo_count'] = Photos::getPhotosCount($user['main']['user_id']);
-		$user['photos'] = Photos::getPhotosByUserID($user['main']['user_id']);
-		
-		require_once(ROOT.'/views/user/info.php');
-		
-		return true;
+	public function saveAsAvatar() {
+		print_r($_POST);
 	}
 
 	public function actionRegister() {

@@ -4,7 +4,7 @@ class SiteController {
 
 	public function actionIndex() {
 		
-		$lastPhotos = Photos::getPhotosList();
+		$lastPhotos = Photos::getPhotosList(true);
 		
 		require_once(ROOT.'/views/site/index.php');
 		

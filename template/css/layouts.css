@@ -1,5 +1,6 @@
 .navbar {
-	background-color: #007bb6;
+	background: linear-gradient(to right, #4b6cb7, #182848);
+/* 	background: linear-gradient(to right, rgb(117, 127, 154), rgb(215, 221, 232)); */
 }
 
 footer .navbar {
@@ -23,7 +24,7 @@ footer .navbar {
 }
 
 .container-fluid a:hover {
-	color: #5bc0de !important;
+	color: #7c4dff !important;
 }
 
 .container-fluid h3 {
