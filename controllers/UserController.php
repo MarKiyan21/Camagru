@@ -86,7 +86,7 @@ class UserController {
 		$user['main']['like_count'] = Activity::getLikesCount($user['main']['user_id']);
 		$user['main']['comment_count'] = Activity::getCommentsCount($user['main']['user_id']);
 		$user['main']['photo_count'] = Photos::getPhotosCount($user['main']['user_id']);
-		$user['photos'] = Photos::getPhotosByUserID($user['main']['user_id']);
+		$user['photos'] = Photos::getPhotosByUserID($user['main']['user_id'], true);
 		
 		require_once(ROOT.'/views/user/info.php');
 		
@@ -205,7 +205,7 @@ class UserController {
 			$status = "already";
 		} else {
 			$status = "ok";
-			Users::update("activate", 1);
+			Users::update("activate", 1, $user['user_id']);
 		}
 		
 		require_once(ROOT.'/views/user/activate.php');

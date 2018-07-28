@@ -59,12 +59,12 @@
 	                <div class="msg_inner">Ok. Bye!</div>
 	            </div>
 	        </div>
-	        
-	        <div class="input">
-		        <textarea class="form-control" rows="2" placeholder="Say something..."></textarea>
-	    	</div>
 	
 	    </div>
+	    
+	    <div class="input">
+	        <textarea class="form-control" rows="2" placeholder="Say something..."></textarea>
+    	</div>
 	    	
 	</div>
 </div>

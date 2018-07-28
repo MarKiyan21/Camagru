@@ -1,15 +1,20 @@
 <?php include (ROOT.'/views/layouts/header.php');?>
 
+<input id="user-id" type="hidden" value="<?php echo $user['main']['user_id']; ?>"/>
+<input id="user-name" type="hidden" value="<?php echo $user['main']['username']; ?>"/>
+
 <div class="container">
 
 	<div class="profile">
 
-		<div class="avatar profile-image" onmouseover="hover3(this);" onmouseout="unhover3(this);">
+		<div class="avatar profile-image" <?php if($status == 2): ?> onmouseover="hover3(this);" onmouseout="unhover3(this);" <?php endif; ?>>
 
 			<img src="<?php echo $user['main']['user_pic']; ?>">
-			<span class="do-photo" onclick="doSelfie()"><i class="im im-icon-Camera"></i></span>
-			<span class="do-upload"><i class="im im-icon-Upload-toCloud"></i></span>
-			<input id='fileid' type="file" onchange="previewFile();" accept="image/*">
+			<?php if($status == 2): ?>
+				<span class="do-photo" onclick="doSelfie()"><i class="im im-icon-Camera"></i></span>
+				<span class="do-upload"><i class="im im-icon-Upload-toCloud"></i></span>
+				<input id='fileid' type="file" onchange="previewFile();" accept="image/*">
+			<?php endif; ?>
 
 		</div>
 
@@ -17,9 +22,10 @@
 
 			<h1 class="profile-user-name"><?php echo $user['main']['username']; ?></h1>
 
-			<div class="profile-edit-btn">Edit Profile</div>
-			
-			<div class="profile-settings-btn"><i class="im im-icon-File-Settings"></i></div>
+			<?php if($status == 2): ?>
+				<div class="profile-edit-btn">Edit Profile</div>
+				<div class="profile-settings-btn"><i class="im im-icon-File-Settings"></i></div>
+			<?php endif; ?>
 
 		</div>
 
@@ -38,11 +44,13 @@
 </div>
 <br>
 
-<div class="preview-block" onmouseover="hover3(this);" onmouseout="unhover3(this);">
-	<img class="img-responsive" id="preview" src="" alt="Image preview...">
-	<span class="cancelUpload" onclick="cancelUpload()"><i class="im im-icon-Close"></i></span>
-	<span class="savePhoto" onclick="setAvatar()"><i class="im im-icon-Profile"></i></span>
-</div>
+<?php if($status == 2): ?>
+	<div class="preview-block" onmouseover="hover3(this);" onmouseout="unhover3(this);">
+		<img class="img-responsive" id="preview" src="" alt="Image preview...">
+		<span class="cancelUpload" onclick="cancelUpload()"><i class="im im-icon-Close"></i></span>
+		<span class="savePhoto" onclick="setAvatar()" data-id=""><i class="im im-icon-Profile"></i></span>
+	</div>
+<?php endif; ?>
 
 <div class="row">
 	

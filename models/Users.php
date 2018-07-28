@@ -11,10 +11,10 @@ class Users {
 		return $result;
 	}
 	
-	public static function update($param, $value) {
+	public static function update($param, $value, $where) {
 		$db = Db::getConnection();
 
-		$sql = "UPDATE users SET " . $param . " = " . $value .";";
+		$sql = "UPDATE users SET " . $param . " = '" . $value ."' WHERE user_id='" . $where . "';";
 		$result = $db->query($sql);
 		
 		return $result;
