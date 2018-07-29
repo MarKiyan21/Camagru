@@ -13,8 +13,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 CREATE TABLE  IF NOT EXISTS `images` (
   `image_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT '0',
-  `likes` int(11) DEFAULT '0',
-  `comments` int(11) DEFAULT '0',
   `path` varchar(255) DEFAULT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`image_id`)

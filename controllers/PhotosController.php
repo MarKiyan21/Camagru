@@ -33,12 +33,13 @@ class PhotosController {
 		}
 		$flag = 0;
 		foreach ($photo['liked'] as $liked) {
-			if (in_array($currentUser['user_id'], $liked)) {
+			if ($currentUser['user_id'] == $liked['user_id']) {
 				$flag = 1;
 				break;
 			}
 		}
 		$photo['is_liked'] = $flag;
+		$photo['current_user'] = $currentUser;
 		print_r($photo);
 		require_once(ROOT.'/views/photos/view.php');
 

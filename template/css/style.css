@@ -87,7 +87,7 @@ body {
 	cursor: pointer;
 }
 
-.heart-like {
+.heart-liked {
 	color: #ee0e0e;
 }
 
@@ -240,7 +240,8 @@ body {
 
 .profile-image img {
 	border-radius: 50%;
-	width: calc(45% - 1rem);
+	width: calc(150px - 1rem);
+	height: calc(150px - 1rem);
 }
 
 .profile-user-settings,
@@ -326,6 +327,7 @@ body {
 
 	.profile-image img {
 		width: 7.7rem;
+		height: 7.7rem;
 	}
 
 	.profile-user-settings {

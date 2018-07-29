@@ -41,27 +41,32 @@ class Activity {
 
         return $count['COUNT(*)'];
     }
+    
+    public static function likeImage($userid=0, $imageid=0) {
+	    $db = Db::getConnection();
 
-    public static function getPhotosList() {
-        
-        $db = Db::getConnection();
+		$sql = "INSERT INTO likes (image_id, user_id) VALUES('$imageid', '$userid');";
+		$result = $db->query($sql);
+		
+		return $result;
+    }
+    
+    public static function unlikeImage($userid=0, $imageid=0) {
+	    $db = Db::getConnection();
 
-        $lastListPhotos = array();
+		$sql = "DELETE FROM likes WHERE image_id='" . $imageid . "' AND user_id = '" . $userid . "';";
+		$result = $db->query($sql);
+		
+		return $result;
+    }
+    
+    public static function postComment($userid=0, $imageid=0, $message="Wrong text!") {
+	    $db = Db::getConnection();
 
-        $result = $db->query('SELECT * FROM images ORDER BY date DESC LIMIT 15');
-
-        $i = 0;
-        
-        while($row = $result->fetch()) {
-            $lastListPhotos[$i]['image_id'] = $row['image_id'];
-            $lastListPhotos[$i]['user_id'] = $row['user_id'];
-            $lastListPhotos[$i]['likes'] = $row['likes'];
-            $lastListPhotos[$i]['path'] = $row['path'];
-            $lastListPhotos[$i]['date'] = $row['date'];
-            $i++;
-        }
-
-        return $lastListPhotos;
+		$sql = "INSERT INTO comments (user_id, image_id, text) VALUES('$userid', '$imageid', '$message');";
+		$result = $db->query($sql);
+		
+		return $result;
     }
 
 }

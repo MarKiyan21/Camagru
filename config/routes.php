@@ -12,5 +12,7 @@ return array(
     '^user/info/([A-Za-z0-9]*$)' => 'user/info/$1',
     '^saveAsAvatar$' => 'activity/saveAsAvatar',
     '^uploadImage$' => 'activity/uploadImage',
+    '^likeImage$' => 'activity/likeImage',
+    '^postComment$' => 'activity/postComment',
     '' => 'site/index',
 );

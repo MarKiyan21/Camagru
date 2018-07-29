@@ -76,12 +76,23 @@ class Photos {
         while($row = $result->fetch()) {
             $lastListPhotos[$i]['image_id'] = $row['image_id'];
             $lastListPhotos[$i]['user_id'] = $row['user_id'];
-            $lastListPhotos[$i]['likes'] = $row['likes'];
-            $lastListPhotos[$i]['comments'] = $row['comments'];
             $lastListPhotos[$i]['path'] = $row['path'];
             $lastListPhotos[$i]['date'] = $row['date'];
+            
+            $likeResult = $db->query('SELECT COUNT(*) FROM likes WHERE image_id="' . $row['image_id'] . '"');
+	        $likeResult->setFetchMode(PDO::FETCH_ASSOC);
+	        $count = $likeResult->fetch();
+	        $lastListPhotos[$i]['likes'] = $count['COUNT(*)'];
+	        
+	        $commentResult = $db->query('SELECT COUNT(*) FROM comments WHERE image_id="' . $row['image_id'] . '"');
+	        $commentResult->setFetchMode(PDO::FETCH_ASSOC);
+	        $count = $commentResult->fetch();
+	        $lastListPhotos[$i]['comments'] = $count['COUNT(*)'];
+
             $i++;
         }
+        
+        
 
         return $lastListPhotos;
     }
@@ -114,10 +125,19 @@ class Photos {
         while($row = $result->fetch()) {
             $lastListPhotos[$i]['image_id'] = $row['image_id'];
             $lastListPhotos[$i]['user_id'] = $row['user_id'];
-            $lastListPhotos[$i]['likes'] = $row['likes'];
-            $lastListPhotos[$i]['comments'] = $row['comments'];
             $lastListPhotos[$i]['path'] = $row['path'];
             $lastListPhotos[$i]['date'] = $row['date'];
+            
+            $likeResult = $db->query('SELECT COUNT(*) FROM likes WHERE image_id="' . $row['image_id'] . '"');
+	        $likeResult->setFetchMode(PDO::FETCH_ASSOC);
+	        $count = $likeResult->fetch();
+	        $lastListPhotos[$i]['likes'] = $count['COUNT(*)'];
+	        
+	        $commentResult = $db->query('SELECT COUNT(*) FROM comments WHERE image_id="' . $row['image_id'] . '"');
+	        $commentResult->setFetchMode(PDO::FETCH_ASSOC);
+	        $count = $commentResult->fetch();
+	        $lastListPhotos[$i]['comments'] = $count['COUNT(*)'];
+            
             $i++;
         }
 
