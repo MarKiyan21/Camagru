@@ -83,7 +83,6 @@ body {
 }
 
 .heart:hover {
-	color: #ee0e0e;
 	cursor: pointer;
 }
 
@@ -106,21 +105,17 @@ body {
 	opacity: 0;
 	top: 50%;
     transform: translate(-50%, -50%);
-	font-size: 2vw;
+	font-size: 4vw;
+	max-width: 45px;
+    min-width: 25px;
     color: var(--secondary);
     position: absolute;
     display: block;
     transition: .3s;
 }
 
-.do-photo {
-    left: 40%;
-    right: auto;
-}
-
 .do-upload {
-    right: 33%;
-    left: auto;
+    right: calc(44% - 2rem);
 }
 
 #fileid {
@@ -271,11 +266,12 @@ body {
 	cursor: pointer;
 }
 
-.profile-settings-btn {
+.profile-settings-btn,
+.profile-camera-btn {
 	display: inline-block;
-	font-size: 2rem;
+	font-size: 3rem;
 	cursor: pointer;
-	margin-left: 1rem;
+	margin-left: 2rem;
 }
 
 .profile-stats {
@@ -292,6 +288,15 @@ body {
 
 .profile-stats li:last-of-type {
 	margin-right: 0;
+}
+
+.href {
+	color: black;
+}
+
+.href:hover {
+	text-decoration: none;
+	color: black;
 }
 
 .profile-bio {

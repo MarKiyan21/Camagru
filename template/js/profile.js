@@ -1,14 +1,16 @@
-var userid = document.getElementById("user-id").value;
-var username = document.getElementById("user-name").value;
+if (document.getElementById("user-id") && document.getElementById("user-name")) {
+	var userid = document.getElementById("user-id").value;
+	var username = document.getElementById("user-name").value;
+}
 
-function hover2(element) {
+function hover(element) {
 	var pic = element.children[0], styleImg = pic.style;
 	var background = element.children[1], styleSpan = background.style;
 	styleImg.opacity = 0.3;
 	styleSpan.opacity = 0.8;
 }
 
-function unhover2(element) {
+function unhover(element) {
 	var pic = element.children[0], styleImg = pic.style;
 	var background = element.children[1], styleSpan = background.style;
 	styleImg.opacity = 1;
@@ -37,21 +39,38 @@ function showDetails(id) {
 	window.location.pathname = "/photos/" + id;
 }
 
+/*
 function doSelfie() {
 	window.location.pathname = "/user/selfie";
 }
+*/
 
 function setAvatar() {
-	var xhr = new XMLHttpRequest();
-	var body = 'user_id=' + encodeURIComponent(userid) + '&image_id=' + encodeURIComponent(document.getElementsByClassName("savePhoto")[0].getAttribute("data-id"));
+	var formdata	= new FormData();
+	var xhr			= new XMLHttpRequest();
+	var xhr2		= new XMLHttpRequest();
+	var file		= document.querySelector('input[type=file]').files[0];
 	
-	xhr.open("POST", "/saveAsAvatar", true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-	xhr.send(body);
+	formdata.append("image", file);
+    formdata.append("user_id", userid);
+    
+    xhr.open("POST", "/uploadImage", true);
+    xhr.send(formdata);
+    xhr.onload = function() {
+// 		document.getElementsByClassName("savePhoto")[0].setAttribute("data-id", this.responseText);
+		
+		var body = 'user_id=' + encodeURIComponent(userid) + '&image_id=' + encodeURIComponent(this.responseText);
 	
-	xhr.onload = function() {
-		window.location.pathname = "/user/info/" + username;
+		xhr2.open("POST", "/saveAsAvatar", true);
+		xhr2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		xhr2.send(body);
+		
+		xhr2.onload = function() {
+			window.location.pathname = "/user/info/" + username;
+		}
 	}
+	
+	
 }
 
 function cancelUpload() {
@@ -60,13 +79,12 @@ function cancelUpload() {
 	document.getElementsByClassName("container")[0].style.display = "block";
 	document.getElementsByClassName("row")[0].style.display = "block";
 	document.querySelector('input[type=file]').files = null;
-	window.location.pathname = "/user/info/" + username;
+// 	window.location.pathname = "/user/info/" + username;
 }
 
 function previewFile(){
-	var reader		= new FileReader();
-	var formdata	= new FormData();
-	var file		= document.querySelector('input[type=file]').files[0];
+	var reader	= new FileReader();
+	var file	= document.querySelector('input[type=file]').files[0];
 
 	reader.onloadend = function () {
 		document.getElementById('preview').src = reader.result;
@@ -77,16 +95,6 @@ function previewFile(){
 	document.getElementsByClassName('preview-block')[0].style.display = "block";
 	if (file) {
 		reader.readAsDataURL(file);
-	}
-    
-    formdata.append("image", file);
-    formdata.append("user_id", userid);
-//     xhr.addEventListener("load", function(event) { uploadcomplete(event); }, false);
-	var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/uploadImage", true);
-    xhr.send(formdata);
-    xhr.onload = function() {
-		document.getElementsByClassName("savePhoto")[0].setAttribute("data-id", this.responseText);
 	}
 }
 

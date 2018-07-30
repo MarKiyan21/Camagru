@@ -7,12 +7,12 @@
 
 	<div class="profile">
 
-		<div class="avatar profile-image" <?php if($status == 2): ?> onmouseover="hover3(this);" onmouseout="unhover3(this);" <?php endif; ?>>
+		<div class="avatar profile-image" <?php if($status == 2): ?> onmouseover="hover(this);" onmouseout="unhover(this);" <?php endif; ?>>
 
 			<img src="<?php echo $user['main']['user_pic']; ?>">
 			<?php if($status == 2): ?>
-				<span class="do-photo" onclick="doSelfie()"><i class="im im-icon-Camera"></i></span>
-				<span class="do-upload"><i class="im im-icon-Upload-toCloud"></i></span>
+<!-- // 				<span class="do-photo" onclick="doSelfie()"><i class="im im-icon-Camera"></i></span> -->
+				<span class="do-upload"><i class="im im-icon-Download-fromCloud"></i></span>
 				<input id='fileid' type="file" onchange="previewFile();" accept="image/*">
 			<?php endif; ?>
 
@@ -24,7 +24,8 @@
 
 			<?php if($status == 2): ?>
 				<div class="profile-edit-btn">Edit Profile</div>
-				<div class="profile-settings-btn"><i class="im im-icon-File-Settings"></i></div>
+				<div class="profile-settings-btn"><i class="fa fa-cogs"></i></div>
+				<div class="profile-camera-btn"><a class="href" href="/user/selfie"><i class="im im-icon-Webcam"></i></a></div>
 			<?php endif; ?>
 
 		</div>
@@ -32,7 +33,7 @@
 		<div class="profile-stats">
 
 			<ul>
-				<li><span class="profile-stat-count"><?php echo($user['main']['photo_count']) ?></span> photos</li>
+				<li><a class="href" href="/photos"><span class="profile-stat-count"><?php echo($user['main']['photo_count']) ?></span> photos</a></li>
 				<li><span class="profile-stat-count"><?php echo($user['main']['like_count']) ?></span> likes</li>
 				<li><span class="profile-stat-count"><?php echo($user['main']['comment_count']) ?></span> comments</li>
 			</ul>

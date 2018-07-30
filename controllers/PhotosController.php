@@ -40,7 +40,6 @@ class PhotosController {
 		}
 		$photo['is_liked'] = $flag;
 		$photo['current_user'] = $currentUser;
-		print_r($photo);
 		require_once(ROOT.'/views/photos/view.php');
 
         return true;

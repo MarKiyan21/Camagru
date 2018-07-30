@@ -91,53 +91,58 @@ function likePhoto(element, imageId, userId) {
 	}
 }
 
-document.getElementById('comment-input').addEventListener("keyup", function(e) {
-	if (e.keyCode == 13) {
-        if (e.ctrlKey) {
-            var val = this.value;
-            if (typeof this.selectionStart == "number" && typeof this.selectionEnd == "number") {
-                var start = this.selectionStart;
-                this.value = val.slice(0, start) + "\n" + val.slice(this.selectionEnd);
-                this.selectionStart = this.selectionEnd = start + 1;
-            } else if (document.selection && document.selection.createRange) {
-                this.focus();
-                var range = document.selection.createRange();
-                range.text = "\r\n";
-                range.collapse(false);
-                range.select();
-            }
-        }
-        else {
-            var message = this.value;
-            message = stripTags(replaceQuots(message.trim())).trim();
-            if (message.length) {
-	            console.log(message);
-	            this.value = "";
-	            
-	            var xhr = new XMLHttpRequest();
-				var body = 'user_id=' + encodeURIComponent(document.getElementById('user-id').value) + '&image_id=' + encodeURIComponent(document.getElementById('photo-id').value) + '&message=' + encodeURIComponent(message);
-				
-				xhr.open("POST", "/postComment", true);
-				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-				xhr.send(body);
-				
-				xhr.onload = function() {
-					var div = document.createElement('div');
-					var newComment = "<div>" +
-							            "<div class='avatar'>" +
-							                "<img alt='avatar' src='" + document.getElementById('user-pic').value + "' />" +
-							            "</div>" +
-							            "<div class='msg'>" +
-							                "<div class='tri'></div>" +
-							                "<div class='msg_inner'>" + message + "</div>" +
-							            "</div>" +
-							        "</div>";
-					div.innerHTML = newComment;
-					document.getElementsByClassName('messages')[0].appendChild(div);
-					var scrollBottom = Math.max(document.getElementsByClassName('messages')[0].offsetHeight - document.getElementsByClassName('test')[0].offsetHeight, 0);
-			        document.getElementsByClassName('messages')[0].scrollTop(scrollBottom);
-				}
-            }
-        }
-    }
-});
+if (input = document.getElementById('comment-input')) {
+	input.addEventListener("keyup", function(e) {
+		if (e.keyCode == 13) {
+	        if (e.ctrlKey) {
+	            var val = this.value;
+	            if (typeof this.selectionStart == "number" && typeof this.selectionEnd == "number") {
+	                var start = this.selectionStart;
+	                this.value = val.slice(0, start) + "\n" + val.slice(this.selectionEnd);
+	                this.selectionStart = this.selectionEnd = start + 1;
+	            } else if (document.selection && document.selection.createRange) {
+	                this.focus();
+	                var range = document.selection.createRange();
+	                range.text = "\r\n";
+	                range.collapse(false);
+	                range.select();
+	            }
+	        }
+	        else {
+	            var message = this.value;
+	            message = stripTags(replaceQuots(message.trim())).trim();
+	            if (message.length) {
+		            this.value = "";
+		            
+		            var xhr = new XMLHttpRequest();
+					var body = 'user_id=' + encodeURIComponent(document.getElementById('user-id').value) + '&image_id=' + encodeURIComponent(document.getElementById('photo-id').value) + '&message=' + encodeURIComponent(message);
+					
+					xhr.open("POST", "/postComment", true);
+					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+					xhr.send(body);
+					
+					xhr.onload = function() {
+						var div = document.createElement('div');
+						var newComment = "<div>" +
+								            "<div class='avatar'>" +
+								            	"<a href='/user/info/" + document.getElementById('user-name').value + "'>" +
+								                	"<img alt='avatar' src='" + document.getElementById('user-pic').value + "' />" +
+							                	"</a>" +
+								            "</div>" +
+								            "<div class='msg'>" +
+								                "<div class='tri'></div>" +
+								                "<div class='msg_inner'>" + message + "</div>" +
+								            "</div>" +
+								        "</div>";
+						div.innerHTML = newComment;
+						document.getElementsByClassName('messages')[0].appendChild(div);
+	/*
+						var scrollBottom = Math.max(document.getElementsByClassName('messages')[0].offsetHeight - document.getElementsByClassName('test')[0].offsetHeight, 0);
+				        document.getElementsByClassName('messages')[0].scrollTop(scrollBottom);
+	*/
+					}
+	            }
+	        }
+	    }
+	});
+}

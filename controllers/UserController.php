@@ -88,8 +88,6 @@ class UserController {
 		$user['main']['photo_count'] = Photos::getPhotosCount($user['main']['user_id']);
 		$user['photos'] = Photos::getPhotosByUserID($user['main']['user_id'], true);
 		
-		print_r($user['photos']);
-		
 		require_once(ROOT.'/views/user/info.php');
 		
 		return true;
@@ -219,6 +217,12 @@ class UserController {
 		unset($_SESSION['user']);
 		require_once(ROOT.'/views/user/logout.php');
 		
+		return true;
+	}
+	
+	public function actionSelfie() {
+		
+		require_once(ROOT.'/views/user/selfie.php');
 		return true;
 	}
 
