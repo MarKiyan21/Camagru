@@ -101,7 +101,8 @@ body {
 	border-radius: 50%;
 }
 
-.profile .avatar span {
+/*
+.profile .avatar div {
 	opacity: 0;
 	top: 50%;
     transform: translate(-50%, -50%);
@@ -113,16 +114,28 @@ body {
     display: block;
     transition: .3s;
 }
+*/
 
 .do-upload {
-    right: calc(44% - 2rem);
+	opacity: 0;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    color: var(--secondary);
+    transition: .3s;
+}
+
+.do-upload i {
+	font-size: 25px;
 }
 
 #fileid {
 	display: none;
 }
 
-.profile .avatar span:hover {
+.do-upload:hover {
 	color: var(--accent);
 	cursor: pointer;
 }

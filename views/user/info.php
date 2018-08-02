@@ -8,12 +8,15 @@
 	<div class="profile">
 
 		<div class="avatar profile-image" <?php if($status == 2): ?> onmouseover="hover(this);" onmouseout="unhover(this);" <?php endif; ?>>
-
-			<img src="<?php echo $user['main']['user_pic']; ?>">
+			<div>
+				<img src="<?php echo $user['main']['user_pic']; ?>">
+			</div>
 			<?php if($status == 2): ?>
-<!-- // 				<span class="do-photo" onclick="doSelfie()"><i class="im im-icon-Camera"></i></span> -->
-				<span class="do-upload"><i class="im im-icon-Download-fromCloud"></i></span>
-				<input id='fileid' type="file" onchange="previewFile();" accept="image/*">
+					<div class="do-upload">
+						<i class="im im-icon-Download-fromCloud"></i>
+					</div>
+					
+					<input id='fileid' type="file" onchange="previewFile();" accept="image/*">
 			<?php endif; ?>
 
 		</div>
