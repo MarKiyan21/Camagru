@@ -39,12 +39,6 @@ function showDetails(id) {
 	window.location.pathname = "/photos/" + id;
 }
 
-/*
-function doSelfie() {
-	window.location.pathname = "/user/selfie";
-}
-*/
-
 function setAvatar() {
 	var formdata	= new FormData();
 	var xhr			= new XMLHttpRequest();
