@@ -26,8 +26,18 @@
 			<h1 class="profile-user-name"><?php echo $user['main']['username']; ?></h1>
 
 			<?php if($status == 2): ?>
-				<div class="profile-edit-btn">Edit Profile</div>
-				<div class="profile-settings-btn"><i class="fa fa-cogs"></i></div>
+				<div class="profile-settings-btn">
+					<input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
+					<label class="menu-open-button" for="menu-open">
+						<i class="fa fa-cogs"></i>
+					</label>
+					
+					<a href="#" class="menu-item blue href" title="Change login"><i class="im im-icon-Male-2"></i></a>
+					<a href="#" class="menu-item green href" title="Change email"><i class="im im-icon-Mail-withAtSign"></i></a>
+					<a href="#" class="menu-item red href" title="Turn off like notifications"><i class="im im-icon-Heart-2"></i></a>
+					<a href="#" class="menu-item orange href" title="Turn off comment notifications"><i class="im im-icon-Speach-Bubble"></i></a>
+				</div>
+				
 				<div class="profile-camera-btn"><a class="href" href="/user/selfie"><i class="im im-icon-Webcam"></i></a></div>
 			<?php endif; ?>
 
