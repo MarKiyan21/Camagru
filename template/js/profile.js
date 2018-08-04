@@ -100,3 +100,12 @@ if (doUpload) {
 		document.getElementById('fileid').click();
 	});
 }
+
+var close = document.getElementsByClassName('close');
+if (close) {
+	for (i = 0; i < close.length; i++) {
+		document.getElementsByClassName('close')[i].addEventListener('click', function() {
+			document.getElementsByClassName('menu-open-button')[0].click();
+		});
+	}
+}

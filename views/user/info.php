@@ -32,10 +32,10 @@
 						<i class="fa fa-cogs"></i>
 					</label>
 					
-					<a href="#" class="menu-item blue href" title="Change login"><i class="im im-icon-Male-2"></i></a>
-					<a href="#" class="menu-item green href" title="Change email"><i class="im im-icon-Mail-withAtSign"></i></a>
-					<a href="#" class="menu-item red href" title="Turn off like notifications"><i class="im im-icon-Heart-2"></i></a>
-					<a href="#" class="menu-item orange href" title="Turn off comment notifications"><i class="im im-icon-Speach-Bubble"></i></a>
+					<a href="#popup1" class="menu-item blue href" title="Change login"><i class="im im-icon-Male-2"></i></a>
+					<a href="#popup2" class="menu-item green href" title="Change email"><i class="im im-icon-Mail-withAtSign"></i></a>
+					<a href="#popup3" class="menu-item red href" title="Disable email newsletter"><i class="im im-icon-Bell"></i></a>
+					<a href="#popup4" class="menu-item orange href" title="Change password"><i class="im im-icon-Lock-2"></i></a>
 				</div>
 				
 				<div class="profile-camera-btn"><a class="href" href="/user/selfie"><i class="im im-icon-Webcam"></i></a></div>
@@ -57,6 +57,80 @@
 
 </div>
 <br>
+
+<div id="popup1" class="overlay">
+	<div class="popup col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
+		<div class="modal-body">
+			<a class="close" href="#">&times;</a>
+			<h4 class="modal-title">Change login</h4>
+		</div>
+		
+		<div class="modal-footer">
+			<form action="#" method="post">
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+					<input class="form-control" type="text" name="login" placeholder="<?php echo $user['main']['username']; ?>" required>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="popup2" class="overlay">
+	<div class="popup col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
+		<div class="modal-body">
+			<a class="close" href="#">&times;</a>
+			<h4 class="modal-title">Change email</h4>
+		</div>
+		
+		<div class="modal-footer">
+			<form action="#" method="post">
+				<div class="form-group col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
+					<input class="form-control" type="text" name="email" placeholder="<?php echo $user['main']['email']; ?>" required>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="popup3" class="overlay">
+	<div class="popup col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
+		<div class="modal-body">
+			<a class="close" href="#">&times;</a>
+			<h4 class="modal-title">Change password</h4>
+		</div>
+		
+		<div class="modal-footer">
+			<form action="#" method="post">
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+					<input class="form-control" type="text" name="old-pass" required>
+				</div>
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+					<input class="form-control" type="text" name="new-pass" required>
+				</div>
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+					<input class="form-control" type="text" name="conf-new-pass" required>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="popup4" class="overlay">
+	<div class="popup col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
+		<div class="modal-body">
+			<a class="close" href="#">&times;</a>
+			<h4 class="modal-title">Change login</h4>
+		</div>
+		
+		<div class="modal-footer">
+			<form action="#" method="post">
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
+					<input class="form-control" type="text" name="login" placeholder="<?php echo $user['main']['username']; ?>" required>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
 <?php if($status == 2): ?>
 	<div class="preview-block" onmouseover="hover3(this);" onmouseout="unhover3(this);">
