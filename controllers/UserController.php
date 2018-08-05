@@ -1,31 +1,31 @@
 <?php
-	
+
 class UserController {
-	
+
 	private function redirect($url, $statusCode = 303) {
 		header('Location: ' . $url, true, $statusCode);
 		die();
 	}
-	
+
 	public static function isLoginExist($login) {
 		if (!empty(Users::getUserByName($login))) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public static function isLoginValid($login) {
 		if (!preg_match("/^[A-Za-z0-9]{3,20}$/i", $login))
 			return false;
 		return true;
 	}
-	
+
 	public static function isEmailValid($email) {
 		if (!preg_match("/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/", $email))
 			return false;
 		return true;
 	}
-	
+
 	public static function isPassMatches($login, $password) {
 		$user = Users::getUserByName($login);
 		if (empty($user) || $user['password'] !== $password) {
@@ -34,7 +34,7 @@ class UserController {
 		return true;
 		
 	}
-	
+
 	public static function isActivate($login) {
 		$user = Users::getUserByName($login);
 		if (empty($user) || $user['activate'] != 1) {
@@ -42,7 +42,7 @@ class UserController {
 		}
 		return true;
 	}
-	
+
 	public static function sendMail($to, $subject, $message) {
 		$encoding = "utf-8";
 		// Set preferences for Subject field
@@ -61,6 +61,69 @@ class UserController {
 		$header .= iconv_mime_encode("Subject", $subject, $subject_preferences);
 		// Send mail
 		mail($to, $subject, $message, $header);
+	}
+
+	public function actionChangeLogin() {
+		if (!empty($_POST)) {
+			$userid = intval($_POST['user_id']);
+			$newLogin = trim(htmlspecialchars($_POST['new_login']));
+			if ($this->isLoginValid($newLogin)) {
+				if ($this->isLoginExist($newLogin)) {
+					print("exist");
+					return true;
+				}
+				Users::update("username", $newLogin, $userid);
+				$_SESSION['user'] = $newLogin;
+				print("changed");
+				return true;
+			} else {
+				print("invalid");
+				return true;
+			}
+		}
+		Router::error404();
+	}
+	
+	public function actionChangeEmail() {
+		if (!empty($_POST)) {
+			$userid = intval($_POST['user_id']);
+			$newEmail = trim(htmlspecialchars($_POST['new_email']));
+			if ($this->isEmailValid($newEmail)) {
+				if (Users::getUserByEmail(trim(strtolower(htmlspecialchars($newEmail))))) {
+					print("exist");
+					return true;
+				}
+				Users::update("email", $newEmail, $userid);
+				print("changed");
+				return true;
+			} else {
+				print("invalid");
+				return true;
+			}
+		}
+		Router::error404();
+	}
+	
+	public function actionChangePassword() {
+		if (!empty($_POST)) {
+			$userid = intval($_POST['user_id']);
+			$oldPass = hash("whirlpool", $_POST['old_pass']);
+			$newPass = hash("whirlpool", $_POST['new_pass']);
+			$confPass = hash("whirlpool", $_POST['conf_pass']);
+			
+			$user = Users::getUserById($userid);
+			if ($user['password'] !== $oldPass) {
+				print("invalid");
+				return true;
+			} else if ($newPass !== $confPass) {
+				print("noneidentical");
+				return true;
+			} else {
+				print("changed");
+				return true;
+			}
+		}
+		Router::error404();
 	}
 	
 	public function actionInfo() {
@@ -129,7 +192,6 @@ class UserController {
 			}
 
 			if ($erLogin === "has-success" && $erEmail === "has-success" && $erPass === "has-success") {
-				print_r("SUCCESS");
 				$login = trim(htmlspecialchars($_POST['login']));
 				$email = trim(strtolower(htmlspecialchars($_POST['email'])));
 				$password = hash("whirlpool", $_POST['newpass']);
@@ -140,7 +202,7 @@ class UserController {
 				$message = "Hi, " . $login . "!\nPlease activate your account for <a href='http://" . $_SERVER['HTTP_HOST'] . "/user/activate/". $token . "/" . $email . "'> this link</a>.\n";
 				self::sendMail($email, "Registration", $message);
 // 				$_SESSION['user'] = $login;
-// 				$this->redirect('/user/login');
+				$this->redirect('/user/login');
 		
 				return true;
 			}

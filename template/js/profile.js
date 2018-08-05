@@ -1,6 +1,7 @@
 if (document.getElementById("user-id") && document.getElementById("user-name")) {
 	var userid = document.getElementById("user-id").value;
 	var username = document.getElementById("user-name").value;
+	var useremail = document.getElementById("user-email").value;
 }
 
 function hover(element) {
@@ -33,6 +34,21 @@ function unhover3(element) {
 	styleImg.opacity = 1;
 	styleSpan1.opacity = 0;
 	styleSpan2.opacity = 0;
+}
+
+function delClass(e) {
+	for (i = 0; i < e.childNodes.length; i++) {
+		if (e.children[i] && (e.children[i].classList.contains('has-error') || e.children[i].classList.contains('has-success'))) {
+			e.children[i].classList.remove("has-error");
+			e.children[i].classList.remove("has-success");
+		}
+	}
+	var helpBlocks = document.getElementsByClassName('help-block');
+	if (helpBlocks) {
+		for (i = 0; i < helpBlocks.length; i++) {
+			helpBlocks[i].style.display = "none";
+		}
+	}
 }
 
 function showDetails(id) {
@@ -108,4 +124,147 @@ if (close) {
 			document.getElementsByClassName('menu-open-button')[0].click();
 		});
 	}
+}
+
+var chLogin = document.getElementById('change-login');
+if (chLogin) {
+	chLogin.addEventListener('submit', event => {
+		event.preventDefault();
+		var xhr = new XMLHttpRequest();
+		var loginElem = document.getElementById('new-login');
+		var helpBlock = document.getElementById('helpBlock1');
+		var newLogin = loginElem.value;
+		
+		if (newLogin === username) {
+			helpBlock.style.display = "block";
+			helpBlock.textContent = "Login is identical";
+			loginElem.parentNode.className += " has-error";
+			return;
+		}
+		
+		var body = 'user_id=' + encodeURIComponent(userid) + '&new_login=' + encodeURIComponent(newLogin);
+		
+		xhr.open("POST", "/user/changeLogin", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		xhr.send(body);
+		
+		xhr.onload = function() {
+			switch (this.responseText) {
+				case "exist":
+					helpBlock.style.display = "block";
+					helpBlock.textContent = "Login already exist";
+					loginElem.parentNode.className += " has-error";
+					break;
+				case "invalid":
+					helpBlock.style.display = "block";
+					helpBlock.textContent = "Invalid login";
+					loginElem.parentNode.className += " has-error";
+					break;
+				default:
+					var close = document.getElementsByClassName('close');
+					if (close) {
+						for (i = 0; i < close.length; i++) {
+							document.getElementsByClassName('close')[i].click();
+							document.getElementsByClassName('menu-open-button')[0].click();
+						}
+					}
+					window.location.pathname = "/user/info/" + newLogin;
+			}
+		}
+	});
+}
+
+var chEmail = document.getElementById('change-email');
+if (chEmail) {
+	chEmail.addEventListener('submit', event => {
+		event.preventDefault();
+		var xhr = new XMLHttpRequest();
+		var emailElem = document.getElementById('new-email');
+		var helpBlock = document.getElementById('helpBlock2');
+		var newEmail = emailElem.value;
+		
+		if (newEmail === useremail) {
+			helpBlock.style.display = "block";
+			helpBlock.textContent = "Email is identical";
+			emailElem.parentNode.className += " has-error";
+			return;
+		}
+		
+		var body = 'user_id=' + encodeURIComponent(userid) + '&new_email=' + encodeURIComponent(newEmail);
+		
+		xhr.open("POST", "/user/changeEmail", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		xhr.send(body);
+		
+		xhr.onload = function() {
+			switch (this.responseText) {
+				case "exist":
+					helpBlock.style.display = "block";
+					helpBlock.textContent = "Email already exist";
+					emailElem.parentNode.className += " has-error";
+					break;
+				case "invalid":
+					helpBlock.style.display = "block";
+					helpBlock.textContent = "Invalid email";
+					emailElem.parentNode.className += " has-error";
+					break;
+				default:
+					var close = document.getElementsByClassName('close');
+					if (close) {
+						for (i = 0; i < close.length; i++) {
+							document.getElementsByClassName('close')[i].click();
+							document.getElementsByClassName('menu-open-button')[0].click();
+						}
+					}
+					window.location.reload();
+			}
+		}
+	});
+}
+
+var chPass = document.getElementById('change-password');
+if (chPass) {
+	chPass.addEventListener('submit', event => {
+		console.log(chPass);
+		event.preventDefault();
+		var xhr = new XMLHttpRequest();
+		var oldPassElem = document.getElementById('old-pass');
+		var newPassElem = document.getElementById('new-pass');
+		var confPassElem = document.getElementById('conf-pass');
+		var helpBlock = document.getElementById('helpBlock3');
+		var oldPass = oldPassElem.value;
+		var newPass = newPassElem.value;
+		var confPass = confPassElem.value;
+		
+		var body = 'user_id=' + encodeURIComponent(userid) + '&old_pass=' + encodeURIComponent(oldPass) + '&new_pass=' + encodeURIComponent(newPass) + '&conf_pass=' + encodeURIComponent(confPass);
+		
+		xhr.open("POST", "/user/changePassword", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		xhr.send(body);
+		
+		xhr.onload = function() {
+			switch (this.responseText) {
+				case "invalid":
+					helpBlock.style.display = "block";
+					helpBlock.textContent = "Isn't your pass";
+					oldPassElem.parentNode.className += " has-error";
+					break;
+				case "noneidentical":
+					helpBlock.style.display = "block";
+					helpBlock.textContent = "Сonfirm the password";
+					newPassElem.parentNode.className += " has-error";
+					confPassElem.parentNode.className += " has-error";
+					break;
+				default:
+					var close = document.getElementsByClassName('close');
+					if (close) {
+						for (i = 0; i < close.length; i++) {
+							document.getElementsByClassName('close')[i].click();
+							document.getElementsByClassName('menu-open-button')[0].click();
+						}
+					}
+					window.location.reload();
+			}
+		}
+	});
 }

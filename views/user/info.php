@@ -2,6 +2,7 @@
 
 <input id="user-id" type="hidden" value="<?php echo $user['main']['user_id']; ?>"/>
 <input id="user-name" type="hidden" value="<?php echo $user['main']['username']; ?>"/>
+<input id="user-email" type="hidden" value="<?php echo $user['main']['email']; ?>"/>
 
 <div class="container">
 
@@ -34,8 +35,8 @@
 					
 					<a href="#popup1" class="menu-item blue href" title="Change login"><i class="im im-icon-Male-2"></i></a>
 					<a href="#popup2" class="menu-item green href" title="Change email"><i class="im im-icon-Mail-withAtSign"></i></a>
-					<a href="#popup3" class="menu-item red href" title="Disable email newsletter"><i class="im im-icon-Bell"></i></a>
-					<a href="#popup4" class="menu-item orange href" title="Change password"><i class="im im-icon-Lock-2"></i></a>
+					<a href="#popup4" class="menu-item red href" title="Disable email newsletter"><i class="im im-icon-Bell"></i></a>
+					<a href="#popup3" class="menu-item orange href" title="Change password"><i class="im im-icon-Lock-2"></i></a>
 				</div>
 				
 				<div class="profile-camera-btn"><a class="href" href="/user/selfie"><i class="im im-icon-Webcam"></i></a></div>
@@ -66,9 +67,10 @@
 		</div>
 		
 		<div class="modal-footer">
-			<form action="#" method="post">
-				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
-					<input class="form-control" type="text" name="login" placeholder="<?php echo $user['main']['username']; ?>" required>
+			<form id="change-login">
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this.parentNode);">
+					<input id="new-login" class="form-control" type="text" name="newlogin" placeholder="<?php echo $user['main']['username']; ?>" required>
+					<span id="helpBlock1" style="display: none; color: red;" class="help-block pull-left">Some text...</span>
 				</div>
 			</form>
 		</div>
@@ -83,9 +85,10 @@
 		</div>
 		
 		<div class="modal-footer">
-			<form action="#" method="post">
-				<div class="form-group col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
-					<input class="form-control" type="text" name="email" placeholder="<?php echo $user['main']['email']; ?>" required>
+			<form id="change-email">
+				<div class="form-group col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2" onclick="delClass(this.parentNode);">
+					<input id="new-email" class="form-control" type="text" name="newemail" placeholder="<?php echo $user['main']['email']; ?>" required>
+					<span id="helpBlock2" style="display: none; color: red;" class="help-block pull-left">Some text...</span>
 				</div>
 			</form>
 		</div>
@@ -100,15 +103,16 @@
 		</div>
 		
 		<div class="modal-footer">
-			<form action="#" method="post">
-				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
-					<input class="form-control" type="text" name="old-pass" required>
+			<form id="change-password">
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this.parentNode);">
+					<input id="old-pass" class="form-control" type="text" name="oldpassword" placeholder="Old password" required>
 				</div>
-				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
-					<input class="form-control" type="text" name="new-pass" required>
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this.parentNode);">
+					<input id="new-pass" class="form-control" type="text" name="newpassword" placeholder="New password" required>
 				</div>
-				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
-					<input class="form-control" type="text" name="conf-new-pass" required>
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this.parentNode);">
+					<input id="conf-pass" class="form-control" type="text" name="confpassword" placeholder="Confirm password" required>
+					<span id="helpBlock1" style="display: none; color: red;" class="help-block pull-left">Some text...</span>
 				</div>
 			</form>
 		</div>
@@ -123,9 +127,10 @@
 		</div>
 		
 		<div class="modal-footer">
-			<form action="#" method="post">
-				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3">
-					<input class="form-control" type="text" name="login" placeholder="<?php echo $user['main']['username']; ?>" required>
+			<form id="change-login">
+				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this);">
+					<input id="new-login" class="form-control" type="text" name="newlogin" placeholder="<?php echo $user['main']['username']; ?>" required>
+					<span id="helpBlock1" style="display: none; color: red;" class="help-block pull-left">Some text...</span>
 				</div>
 			</form>
 		</div>
