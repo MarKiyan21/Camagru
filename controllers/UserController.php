@@ -54,7 +54,7 @@ class UserController {
 		);
 		// Set mail header
 		$header = "Content-type: text/html; charset=" . $encoding . " \r\n";
-		$header .= "From: Marian <no-reply@gmail.com> \r\n";
+		$header .= "From: Camagru <no-reply@gmail.com> \r\n";
 		$header .= "MIME-Version: 1.0 \r\n";
 		$header .= "Content-Transfer-Encoding: 8bit \r\n";
 		$header .= "Date: ".date("r (T)")." \r\n";

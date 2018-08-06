@@ -3,7 +3,8 @@
 function __autoload($class_name) {
 	$array_paths = array(
 		'/models/',
-		'/components/'
+		'/components/',
+		'/controllers/'
 	);
 	
 	foreach ($array_paths as $path) {

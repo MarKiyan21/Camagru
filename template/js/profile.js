@@ -76,7 +76,8 @@ function setAvatar() {
 		xhr2.send(body);
 		
 		xhr2.onload = function() {
-			window.location.pathname = "/user/info/" + username;
+			console.log("asdasd");
+			window.location.reload();
 		}
 	}
 	

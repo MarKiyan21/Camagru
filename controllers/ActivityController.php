@@ -27,6 +27,8 @@ class ActivityController {
 		$imageID = intval($_POST['image_id']);
 		$userID = intval($_POST['user_id']);
 		$photo = Photos::getPhotoById($imageID);
+		print_r($photo);
+		print_r($userID);
 		
 		Users::update("user_pic", $photo['path'], $userID);
 		
@@ -67,14 +69,14 @@ class ActivityController {
 			$imageID = intval($_POST['image_id']);
 			$type = intval($_POST['like_type']);
 			$notif = intval($_POST['notif']);
-			$email = intval($_POST['email']);
+			$email = $_POST['email'];
 			
 			if ($type == 1) {
-				Activity::likeImage($userID, $imageID);
 				if ($notif == 1) {
 					$message = "Hi! Someone like your <a href='http://" . $_SERVER['HTTP_HOST'] . "/photos/" . $imageID . "'> photo</a>.\n";
 					UserController::sendMail($email, "Like", $message);
 				}
+				Activity::likeImage($userID, $imageID);
 			} else {
 				Activity::unlikeImage($userID, $imageID);
 			}
@@ -89,13 +91,13 @@ class ActivityController {
 			$imageID = intval($_POST['image_id']);
 			$msg = trim(htmlspecialchars($_POST['message']));
 			$notif = intval($_POST['notif']);
-			$email = intval($_POST['email']);
+			$email = $_POST['email'];
 		
-			Activity::postComment($userID, $imageID, $msg);
 			if ($notif == 1) {
 				$message = "Hi! Someone comment your <a href='http://" . $_SERVER['HTTP_HOST'] . "/photos/" . $imageID . "'> photo</a>.\n";
 				UserController::sendMail($email, "Comment", $message);
 			}
+			Activity::postComment($userID, $imageID, $msg);
 	
 			return http_response_code(200);
 		}
