@@ -273,7 +273,7 @@ body {
 	display: inline-block;
 	font-size: 3rem;
 	cursor: pointer;
-/* 	margin-left: 2rem; */
+	margin-top: 1rem;
 }
 
 .profile-settings-btn {
@@ -512,6 +512,13 @@ body {
 	transition: transform ease-out 200ms;
 }
 
+.camera-button {
+	background: #ffffff;
+	border-radius: 100%;
+	transform: translate3d(0, 0, 0);
+	transition: transform ease-out 200ms;
+}
+
 .menu-open {
 	display: none;
 }
@@ -537,13 +544,15 @@ body {
 	transition-duration: 180ms;
 }
 
-.menu-open-button {
+.menu-open-button,
+.camera-button {
 	z-index: 2;
 	transform: scale(1.1, 1.1) translate3d(0, 0, 0);
 	cursor: pointer;
 }
 
-.menu-open-button:hover {
+.menu-open-button:hover,
+.camera-button:hover {
 	transform: scale(1.2, 1.2) translate3d(0, 0, 0);
 }
 

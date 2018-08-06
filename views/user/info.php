@@ -27,7 +27,11 @@
 			<h1 class="profile-user-name"><?php echo $user['main']['username']; ?></h1>
 
 			<?php if($status == 2): ?>
-				<div class="profile-camera-btn"><a class="href" href="/user/selfie"><i class="im im-icon-Webcam"></i></a></div>
+				<div class="profile-camera-btn">
+					<label class="camera-button">
+						<a class="href" href="/user/selfie"><i class="im im-icon-Webcam"></i></a>
+					</label>
+				</div>
 				
 				<div class="profile-settings-btn">
 					<input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
