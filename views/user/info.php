@@ -27,6 +27,8 @@
 			<h1 class="profile-user-name"><?php echo $user['main']['username']; ?></h1>
 
 			<?php if($status == 2): ?>
+				<div class="profile-camera-btn"><a class="href" href="/user/selfie"><i class="im im-icon-Webcam"></i></a></div>
+				
 				<div class="profile-settings-btn">
 					<input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
 					<label class="menu-open-button" for="menu-open">
@@ -35,11 +37,16 @@
 					
 					<a href="#popup1" class="menu-item blue href" title="Change login"><i class="im im-icon-Male-2"></i></a>
 					<a href="#popup2" class="menu-item green href" title="Change email"><i class="im im-icon-Mail-withAtSign"></i></a>
-					<a href="#popup4" class="menu-item red href" title="Disable email newsletter"><i class="im im-icon-Bell"></i></a>
+					<a id="ch-notifications" class="menu-item red href" title="Email notifications">
+						<?php if ($user['main']['notification'] == 1): ?>
+							<i class="fa fa-bell-slash"></i>
+						<?php else: ?>
+							<i class="fa fa-bell"></i>
+						<?php endif; ?>
+					</a>
 					<a href="#popup3" class="menu-item orange href" title="Change password"><i class="im im-icon-Lock-2"></i></a>
 				</div>
 				
-				<div class="profile-camera-btn"><a class="href" href="/user/selfie"><i class="im im-icon-Webcam"></i></a></div>
 			<?php endif; ?>
 
 		</div>
@@ -105,32 +112,14 @@
 		<div class="modal-footer">
 			<form id="change-password">
 				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this.parentNode);">
-					<input id="old-pass" class="form-control" type="text" name="oldpassword" placeholder="Old password" required>
+					<input id="old-pass" class="form-control" type="password" name="oldpassword" placeholder="Old password" required>
 				</div>
 				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this.parentNode);">
-					<input id="new-pass" class="form-control" type="text" name="newpassword" placeholder="New password" required>
+					<input id="new-pass" class="form-control" type="password" name="newpassword" placeholder="New password" required>
 				</div>
 				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this.parentNode);">
-					<input id="conf-pass" class="form-control" type="text" name="confpassword" placeholder="Confirm password" required>
-					<span id="helpBlock1" style="display: none; color: red;" class="help-block pull-left">Some text...</span>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
-
-<div id="popup4" class="overlay">
-	<div class="popup col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
-		<div class="modal-body">
-			<a class="close" href="#">&times;</a>
-			<h4 class="modal-title">Change login</h4>
-		</div>
-		
-		<div class="modal-footer">
-			<form id="change-login">
-				<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this);">
-					<input id="new-login" class="form-control" type="text" name="newlogin" placeholder="<?php echo $user['main']['username']; ?>" required>
-					<span id="helpBlock1" style="display: none; color: red;" class="help-block pull-left">Some text...</span>
+					<input id="conf-pass" class="form-control" type="password" name="confpassword" placeholder="Confirm password" required>
+					<span id="helpBlock3" style="display: none; color: red;" class="help-block pull-left">Some text...</span>
 				</div>
 			</form>
 		</div>

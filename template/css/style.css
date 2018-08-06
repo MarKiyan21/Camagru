@@ -273,7 +273,7 @@ body {
 	display: inline-block;
 	font-size: 3rem;
 	cursor: pointer;
-	margin-left: 2rem;
+/* 	margin-left: 2rem; */
 }
 
 .profile-settings-btn {
@@ -281,7 +281,7 @@ body {
 }
 
 .profile-camera-btn {
-	margin-left: 7rem;
+	margin-left: 1rem;
 }
 
 .profile-stats {
@@ -362,6 +362,15 @@ body {
 	.profile-stats {
 		order: 1;
 		margin-top: 1.5rem;
+	}
+	
+	.menu-open-button,
+	.menu-item {
+		margin-top: -1rem;
+	}
+	
+	.profile-camera-btn {
+		margin-left: 4rem;
 	}
 
 	.profile-stats ul {

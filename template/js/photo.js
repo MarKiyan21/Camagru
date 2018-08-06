@@ -68,15 +68,15 @@ function  stripTags(str, allowed_tags) {
     return str; 
 }
 
-function likePhoto(element, imageId, userId) {
+function likePhoto(element, imageId, userId, notif) {
 	if (element.classList.contains('heart-liked')) {
 		var like = 0;
 	} else {
 		var like = 1;
 	}
-	
+	var email = document.getElementById('owner-mail').value;
 	var xhr = new XMLHttpRequest();
-	var body = 'user_id=' + encodeURIComponent(userId) + '&image_id=' + encodeURIComponent(imageId) + '&like_type=' + encodeURIComponent(like);
+	var body = 'user_id=' + encodeURIComponent(userId) + '&image_id=' + encodeURIComponent(imageId) + '&like_type=' + encodeURIComponent(like) + '&notif=' + encodeURIComponent(notif) + '&email=' + encodeURIComponent(email);
 	
 	xhr.open("POST", "/likeImage", true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
@@ -115,7 +115,7 @@ if (input = document.getElementById('comment-input')) {
 		            this.value = "";
 		            
 		            var xhr = new XMLHttpRequest();
-					var body = 'user_id=' + encodeURIComponent(document.getElementById('user-id').value) + '&image_id=' + encodeURIComponent(document.getElementById('photo-id').value) + '&message=' + encodeURIComponent(message);
+					var body = 'user_id=' + encodeURIComponent(document.getElementById('user-id').value) + '&image_id=' + encodeURIComponent(document.getElementById('photo-id').value) + '&message=' + encodeURIComponent(message) + '&notif=' + encodeURIComponent(document.getElementById('owner-notif').value) + '&email=' + encodeURIComponent(document.getElementById('owner-mail').value);
 					
 					xhr.open("POST", "/postComment", true);
 					xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');

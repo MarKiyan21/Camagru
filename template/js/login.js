@@ -9,5 +9,9 @@ function delClass(e) {
 	
 }
 
-login.addEventListener("click", delClass, false);
-password.addEventListener("click", delClass, false);
+if (login) {
+	login.addEventListener("click", delClass, false);
+}
+if (password) {
+	password.addEventListener("click", delClass, false);
+}

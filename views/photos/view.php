@@ -4,11 +4,13 @@
 <input id="user-name" type="hidden" value="<?php echo $photo['current_user']['username']; ?>"/>
 <input id="user-pic" type="hidden" value="<?php echo $photo['current_user']['user_pic']; ?>"/>
 <input id="photo-id" type="hidden" value="<?php echo $photo['image_id']; ?>"/>
+<input id="owner-notif" type="hidden" value="<?php echo $photo['owner']['notification']; ?>"/>
+<input id="owner-mail" type="hidden" value="<?php echo $photo['owner']['email']; ?>"/>
 
 <div class="row">
 	<div class="pack col-md-5 col-sm-6 col-xs-10 col-md-offset-1 col-sm-offset-1 col-xs-offset-1" onmouseover="hover(this);" onmouseout="unhover(this);">
 		<img class="big-image img-responsive" src=" <?php echo $photo['path'] ?> ">
-		<span class="heart <?php if ($photo['is_liked'] == 1): ?> heart-liked <?php endif; ?>" onclick="likePhoto(this, <?php echo $photo['image_id'] ?>, <?php echo $photo['current_user']['user_id']; ?>);"><i class="fa fa-heart"></i></span>
+		<span class="heart <?php if ($photo['is_liked'] == 1): ?> heart-liked <?php endif; ?>" onclick="likePhoto(this, <?php echo $photo['image_id']; ?>, <?php echo $photo['current_user']['user_id']; ?>, <?php echo $photo['owner']['notification']; ?>);"><i class="fa fa-heart"></i></span>
 	</div>
 	
 	<div class="col-md-5 col-sm-5 col-xs-10 col-md-offset-0 col-sm-offset-0 col-xs-offset-1">

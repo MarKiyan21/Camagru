@@ -119,9 +119,26 @@ class UserController {
 				print("noneidentical");
 				return true;
 			} else {
+				Users::update("password", $newPass, $userid);
 				print("changed");
 				return true;
 			}
+		}
+		Router::error404();
+	}
+	
+	public function actionChangeNotification() {
+		if (!empty($_POST)) {
+			$userid = intval($_POST['user_id']);
+			$user = Users::getUserById($userid);
+			if ($user['notification'] == 1) {
+				Users::update("notification", 0, $userid);
+			} else {
+				Users::update("notification", 1, $userid);
+			}
+
+			print("changed");
+			return true;
 		}
 		Router::error404();
 	}
@@ -199,9 +216,8 @@ class UserController {
 				
 				Users::add($login, $email, $password, $token);
 				
-				$message = "Hi, " . $login . "!\nPlease activate your account for <a href='http://" . $_SERVER['HTTP_HOST'] . "/user/activate/". $token . "/" . $email . "'> this link</a>.\n";
+				$message = "Hi, " . $login . "!\nPlease activate your account for <a href='http://" . $_SERVER['HTTP_HOST'] . "/user/activate/" . $token . "/" . $email . "'> this link</a>.\n";
 				self::sendMail($email, "Registration", $message);
-// 				$_SESSION['user'] = $login;
 				$this->redirect('/user/login');
 		
 				return true;

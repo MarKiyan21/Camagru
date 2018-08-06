@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `notification` int(11) DEFAULT '1',
   `password` varchar(255) DEFAULT NULL,
   `user_pic` varchar(255) DEFAULT '/template/img/avatars/nopic.png',
   `token` varchar(255) DEFAULT NULL,

@@ -224,46 +224,71 @@ if (chEmail) {
 
 var chPass = document.getElementById('change-password');
 if (chPass) {
-	chPass.addEventListener('submit', event => {
-		console.log(chPass);
+	chPass.addEventListener('keyup', event => {
 		event.preventDefault();
+		if (event.keyCode === 13) {
+			var xhr = new XMLHttpRequest();
+			var oldPassElem = document.getElementById('old-pass');
+			var newPassElem = document.getElementById('new-pass');
+			var confPassElem = document.getElementById('conf-pass');
+			var helpBlock = document.getElementById('helpBlock3');
+			var oldPass = oldPassElem.value;
+			var newPass = newPassElem.value;
+			var confPass = confPassElem.value;
+
+			if (newPass.length < 1) {
+				helpBlock.style.display = "block";
+				helpBlock.textContent = "Pass can't be empty";
+				newPassElem.parentNode.className += " has-error";
+			}
+			
+			var body = 'user_id=' + encodeURIComponent(userid) + '&old_pass=' + encodeURIComponent(oldPass) + '&new_pass=' + encodeURIComponent(newPass) + '&conf_pass=' + encodeURIComponent(confPass);
+			
+			xhr.open("POST", "/user/changePassword", true);
+			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+			xhr.send(body);
+			
+			xhr.onload = function() {
+				switch (this.responseText) {
+					case "invalid":
+						helpBlock.style.display = "block";
+						helpBlock.textContent = "Isn't your pass";
+						oldPassElem.parentNode.className += " has-error";
+						break;
+					case "noneidentical":
+						helpBlock.style.display = "block";
+						helpBlock.textContent = "Сonfirm the password";
+						newPassElem.parentNode.className += " has-error";
+						confPassElem.parentNode.className += " has-error";
+						break;
+					default:
+						var close = document.getElementsByClassName('close');
+						if (close) {
+							for (i = 0; i < close.length; i++) {
+								document.getElementsByClassName('close')[i].click();
+								document.getElementsByClassName('menu-open-button')[0].click();
+							}
+						}
+						window.location.reload();
+				}
+			}
+		}
+	});
+}
+
+var chNotif = document.getElementById('ch-notifications');
+if (chNotif) {
+	chNotif.addEventListener('click', event => {
 		var xhr = new XMLHttpRequest();
-		var oldPassElem = document.getElementById('old-pass');
-		var newPassElem = document.getElementById('new-pass');
-		var confPassElem = document.getElementById('conf-pass');
-		var helpBlock = document.getElementById('helpBlock3');
-		var oldPass = oldPassElem.value;
-		var newPass = newPassElem.value;
-		var confPass = confPassElem.value;
+		var body = 'user_id=' + encodeURIComponent(userid);
 		
-		var body = 'user_id=' + encodeURIComponent(userid) + '&old_pass=' + encodeURIComponent(oldPass) + '&new_pass=' + encodeURIComponent(newPass) + '&conf_pass=' + encodeURIComponent(confPass);
-		
-		xhr.open("POST", "/user/changePassword", true);
+		xhr.open("POST", "/user/changeNotification", true);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 		xhr.send(body);
 		
 		xhr.onload = function() {
-			switch (this.responseText) {
-				case "invalid":
-					helpBlock.style.display = "block";
-					helpBlock.textContent = "Isn't your pass";
-					oldPassElem.parentNode.className += " has-error";
-					break;
-				case "noneidentical":
-					helpBlock.style.display = "block";
-					helpBlock.textContent = "Сonfirm the password";
-					newPassElem.parentNode.className += " has-error";
-					confPassElem.parentNode.className += " has-error";
-					break;
-				default:
-					var close = document.getElementsByClassName('close');
-					if (close) {
-						for (i = 0; i < close.length; i++) {
-							document.getElementsByClassName('close')[i].click();
-							document.getElementsByClassName('menu-open-button')[0].click();
-						}
-					}
-					window.location.reload();
+			if (this.responseText === "changed") {
+				window.location.reload()
 			}
 		}
 	});

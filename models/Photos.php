@@ -23,7 +23,7 @@ class Photos {
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $photo = $result->fetch();
             
-            $result = $db->query('SELECT username, user_pic FROM users LEFT JOIN images ON users.user_id = images.user_id WHERE images.user_id = "' . $photo['user_id'] . '";');
+            $result = $db->query('SELECT username, email, user_pic, notification FROM users LEFT JOIN images ON users.user_id = images.user_id WHERE images.user_id = "' . $photo['user_id'] . '";');
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $photo['owner'] = $result->fetch();
             
