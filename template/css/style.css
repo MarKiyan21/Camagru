@@ -309,6 +309,11 @@ body {
 	color: black;
 }
 
+.href:focus {
+	text-decoration: none;
+	color: #ffffff;
+}
+
 .profile-bio {
 	font-size: 1.6rem;
 	font-weight: 400;
@@ -323,6 +328,8 @@ body {
 
 .area {
 	width: 100%;
+	height: 80vh;
+	overflow-y: scroll;
 }
 
 .buffer {
@@ -330,6 +337,15 @@ body {
 	height: 300px;
 	background-color: #cccccc;
 	border: 1px solid #000000;
+}
+
+.buff-capture-button {
+	display: block;
+	margin: 10px 0;
+	padding: 10px 20px;
+	background-color: cornflowerblue;
+	color: #ffffff;
+	text-align: center;
 }
 
 @media screen and (max-width: 40rem) {
