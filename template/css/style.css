@@ -321,6 +321,17 @@ body {
 	font-weight: 600;
 }
 
+.area {
+	width: 100%;
+}
+
+.buffer {
+	width: 400px;
+	height: 300px;
+	background-color: #cccccc;
+	border: 1px solid #000000;
+}
+
 @media screen and (max-width: 40rem) {
 	.profile {
 		display: flex;
@@ -389,6 +400,11 @@ body {
 
 	.profile-stat-count {
 		display: block;
+	}
+	
+	.buffer {
+		width: 200px;
+		height: 180px;
 	}
 }
 
@@ -657,9 +673,11 @@ body {
 	text-decoration: none;
 	color: #333;
 }
+
 .popup .close:hover {
 	color: var(--accent);
 }
+
 .popup .content {
 	max-height: 30%;
 	overflow: auto;
