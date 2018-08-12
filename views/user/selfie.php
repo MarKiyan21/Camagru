@@ -19,13 +19,13 @@
 			
 			<div class="column">
 					<div>
-						<img class="img-responsive" src="/assets/stickers/1.png">
+						<img class="img-responsive" src="/assets/stickers/1.svg">
 					</div>
 					<div>
-						<img class="img-responsive" src="/assets/stickers/4.png">
+						<img class="img-responsive" src="/assets/stickers/4.svg">
 					</div>
 					<div>
-						<img class="img-responsive" src="/assets/stickers/7.png">
+						<img class="img-responsive" src="/assets/stickers/7.svg">
 					</div>
 			</div>
 			
@@ -34,22 +34,22 @@
 						<img class="img-responsive" src="/assets/stickers/2.png">
 					</div>
 					<div>
-						<img class="img-responsive" src="/assets/stickers/5.png">
+						<img class="img-responsive" src="/assets/stickers/5.svg">
 					</div>
 					<div>
-						<img class="img-responsive" src="/assets/stickers/8.png">
+						<img class="img-responsive" src="/assets/stickers/8.svg">
 					</div>
 			</div>
 			
 			<div class="column">
 					<div>
-						<img class="img-responsive" src="/assets/stickers/3.png">
+						<img class="img-responsive" src="/assets/stickers/3.svg">
 					</div>
 					<div>
-						<img class="img-responsive" src="/assets/stickers/6.png">
+						<img class="img-responsive" src="/assets/stickers/6.svg">
 					</div>
 					<div>
-						<img class="img-responsive" src="/assets/stickers/9.png">
+						<img class="img-responsive" src="/assets/stickers/9.svg">
 					</div>
 			</div>
 			
