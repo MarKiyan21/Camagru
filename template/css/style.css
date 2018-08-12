@@ -333,19 +333,57 @@ body {
 }
 
 .buffer {
-	width: 400px;
-	height: 300px;
-	background-color: #cccccc;
-	border: 1px solid #000000;
+	position: relative;
+	width: 350px;
+	height: auto;
 }
 
-.buff-capture-button {
-	display: block;
-	margin: 10px 0;
-	padding: 10px 20px;
-	background-color: cornflowerblue;
-	color: #ffffff;
-	text-align: center;
+#video {
+	width: 100%;
+	height: 48vmin;
+}
+
+#canvas {
+	display: none;
+	width: 50%;
+	height: auto;
+}
+
+#set-as-avatar,
+#save-photo {
+	display: none;
+}
+
+.button-area {
+	position: absolute;
+	display: inline-grid;
+	width: 100%;
+	height: auto;
+}
+
+.button-area .btn {
+	margin: 2px;
+}
+
+#capture {
+	margin: 0 auto;
+}
+
+.stickers-area {
+	height: 80vh;
+	overflow-y: scroll;
+}
+
+.stickers-area .row {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 4px;
+}
+
+.stickers-area .column {
+	flex: 33.3%;
+	max-width: 33.3%;
+	padding: 0 4px;
 }
 
 @media screen and (max-width: 40rem) {
@@ -419,8 +457,8 @@ body {
 	}
 	
 	.buffer {
-		width: 200px;
-		height: 180px;
+		width: 100%;
+		height: 34rem;
 	}
 }
 
