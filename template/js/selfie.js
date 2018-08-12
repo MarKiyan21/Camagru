@@ -1,8 +1,8 @@
 var globalWidth = 50;
 var globalX = 25;
 var globalY = 0;
-var stickerWidth = 0;
-var stickerHeight = 0;
+var stickerWidth = 50;
+var stickerHeight = 50;
 
 (function() {
 	var video = document.getElementById('video'),
@@ -37,8 +37,6 @@ var stickerHeight = 0;
 		savePhoto.style.display = "inline-grid";
 		canvas.style.display = "inline-grid";
 		context.drawImage(video, 0, 0, 640, 480);
-		console.log(stickerWidth);
-		console.log(stickerHeight);
 		context.drawImage(sticker, globalX * 2 - 25, globalY * 2, stickerWidth * 2, stickerHeight * 2);
 	})
 	
@@ -70,21 +68,21 @@ if (sticker) {
 		if (sticker.dataset.flag == 1) {
 			if (e.keyCode == 187) {
 				globalWidth += 5;
-				if (globalWidth > 320) {
-					globalWidth = 320;
+				if (globalWidth + globalX > 320 || globalWidth + globalY > 225) {
+					globalWidth -= 5;
 				}
 				sticker.style.width = globalWidth + "px";
-				stickerWidth = sticker.offsetWidth;
-				stickerHeight = sticker.offsetHeight;
+				stickerWidth = sticker.clientWidth;
+				stickerHeight = sticker.clientHeight;
 			}
 			if (e.keyCode == 189) {
 				globalWidth -= 5;
-				if (globalWidth < 25) {
-					globalWidth = 25;
+				if (globalWidth - globalX < 25 || globalWidth - globalY < 0) {
+					globalWidth -= 5;
 				}
 				sticker.style.width = globalWidth + "px";
-				stickerWidth = sticker.offsetWidth;
-				stickerHeight = sticker.offsetHeight;
+				stickerWidth = sticker.clientWidth;
+				stickerHeight = sticker.clientHeight;
 			}
 			if (e.keyCode == 87) {
 				globalY -= 5;
@@ -95,8 +93,8 @@ if (sticker) {
 			}
 			if (e.keyCode == 83) {
 				globalY += 5;
-				if (globalY > 170) {
-					globalY = 170;
+				if (globalY + stickerHeight > 225) {
+					globalY -= 5;
 				}
 				sticker.style.top = globalY + "px";
 			}
@@ -109,8 +107,8 @@ if (sticker) {
 			}
 			if (e.keyCode == 68) {
 				globalX += 5;
-				if (globalX > 275) {
-					globalX = 275;
+				if (globalX + stickerWidth > 320) {
+					globalX -= 5;
 				}
 				sticker.style.left = globalX + "px";
 			}
