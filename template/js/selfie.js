@@ -37,7 +37,8 @@ var stickerHeight = 50;
 		savePhoto.style.display = "inline-grid";
 		canvas.style.display = "inline-grid";
 		context.drawImage(video, 0, 0, 640, 480);
-		context.drawImage(sticker, globalX * 2 - 25, globalY * 2 + 20, stickerWidth * 2, stickerHeight * 2);
+		var coeficient =  325 - video.clientWidth;
+		context.drawImage(sticker, globalX * 2 + coeficient, globalY * 2 + 20, stickerWidth * 2, stickerHeight * 2);
 	})
 	
 })();
