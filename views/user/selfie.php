@@ -22,7 +22,7 @@
 			
 			<div class="column">
 					<div>
-						<img id="test" data-id="1" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/1.svg">
+						<img data-id="1" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/1.svg">
 					</div>
 					<div>
 						<img data-id="4" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/4.svg">

@@ -309,6 +309,12 @@ class UserController {
 			$photoBase64 = $_POST['image'];
 			$stickerPath = $_POST['sticker'];
 			$setAsAvatar = $_POST['avatar'];
+			$x = $_POST['oX'];
+			$y = $_POST['oY'];
+			$width = $_POST['width'];
+			$height = $_POST['height'];
+			$originWidth = $_POST['originSize'];
+			$coeficient =  325 - $originWidth;
 			
 			$photo = preg_replace("/^.+base64,/", "", $photoBase64);
 			$photo = str_replace(' ', '+', $photo);
@@ -317,14 +323,29 @@ class UserController {
 			if ($stickerPath !== "none") {
 				
 				$gd_filter = imagecreatefrompng(ROOT.$stickerPath);
-				imagecopy($gd_photo, $gd_filter, 0, 0, 0, 0, imagesx($gd_filter), imagesy($gd_filter));
+				imagecopyresampled($gd_photo, $gd_filter, $x * 2 + $coeficient, $y * 2 + 20, 0, 0, $width * 2, $height * 2, imagesx($gd_filter), imagesy($gd_filter));
 				ob_start();
 					imagepng($gd_photo);
 					$image_data = ob_get_contents();
 				ob_end_clean();
 			}
 			
-			print("data:image/png;base64," . base64_encode($image_data));
+			$filePath = '/template/img/' . uniqid() . '.png';
+			
+			if ($stickerPath !== "none") {
+				file_put_contents(ROOT . $filePath, $image_data);
+			} else {
+				file_put_contents(ROOT . $filePath, $photo);
+			}
+			
+			$user = Users::getUserByName($_SESSION['user']);
+			Photos::add($user['user_id'], $filePath);
+			
+			if ($setAsAvatar === 'true') {
+				Users::update("user_pic", $filePath, $user['user_id']);
+			}
+			
+			print($user['username']);
 			return true;
 		}
 		Router::error404();

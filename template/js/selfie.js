@@ -1,8 +1,13 @@
 var globalWidth = 50;
 var globalX = 25;
 var globalY = 0;
+var originX = 25;
+var originY = 0;
 var stickerWidth = 50;
+var originWidth = 50;
 var stickerHeight = 50;
+var originHeight = 50;
+var emptyCanvas = "";
 
 (function() {
 	var video = document.getElementById('video'),
@@ -25,7 +30,9 @@ var stickerHeight = 50;
 		audio: false
 	}, function (stream) {
 		video.src = vendorUrl.createObjectURL(stream);
-		video.play();
+		if (video) {
+			video.play();
+		}
 	}, function (error) {
 		//error.code
 	})
@@ -39,7 +46,14 @@ var stickerHeight = 50;
 		context.drawImage(video, 0, 0, 640, 480);
 		canvas.dataset.id = sticker.dataset.id;
 		
+		emptyCanvas = canvas.toDataURL("image/png");
+		originX = globalX;
+		originY = globalY;
+		originWidth = stickerWidth;
+		originHeight = stickerHeight;
+		
 		var coeficient =  325 - video.clientWidth;
+		console.log(video.clientWidth);
 		context.drawImage(sticker, globalX * 2 + coeficient, globalY * 2 + 20, stickerWidth * 2, stickerHeight * 2);
 	})
 	
@@ -47,10 +61,9 @@ var stickerHeight = 50;
 
 function gluedPhoto(setAsAvatar = true) {
 	var xhr = new XMLHttpRequest(),
-		canvas = document.getElementById('canvas'),
-		dataURL = canvas.toDataURL("image/png");
-	
-	dataUrl = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+		canvas = document.getElementById('canvas');
+// 		dataURL = canvas.toDataURL("image/png");
+	emptyCanvas = emptyCanvas.replace(/^data:image\/(png|jpg);base64,/, "");
 	
 	if (canvas.dataset.id !== "undefined") {
 		var stickerPath = "/assets/stickers/" + canvas.dataset.id + ".png";
@@ -58,13 +71,15 @@ function gluedPhoto(setAsAvatar = true) {
 		var stickerPath = "none";
 	}
 	
-	var body = 'image=' + encodeURIComponent(dataUrl) + '&sticker=' + encodeURIComponent(stickerPath) + '&avatar=' + encodeURIComponent(setAsAvatar);
+	var body = 'image=' + encodeURIComponent(emptyCanvas) + '&sticker=' + encodeURIComponent(stickerPath) + '&avatar=' + encodeURIComponent(setAsAvatar) + '&oX=' + encodeURIComponent(originX) + '&oY=' + encodeURIComponent(originY) + '&width=' + encodeURIComponent(originWidth) + '&height=' + encodeURIComponent(originHeight) + '&originSize=' + encodeURIComponent(document.getElementById('video').clientWidth);
 	
 	xhr.open("POST", "/user/gluedPhoto", true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     xhr.send(body);
     xhr.onload = function() {
-		document.getElementById('test').setAttribute('src', this.responseText);
+		if (this.responseText) {
+			window.location.pathname = "/user/info/" + this.responseText;
+		}
 	}
 }
 
@@ -72,9 +87,8 @@ function imposePhoto(element) {
 	var dataId = element.dataset.id,
 		canvas = document.getElementById('canvas'),
 		sticker = document.getElementById('sticker'),
-		context = sticker.getContext('2d'),
-		buffer = document.getElementById('sticker-buff');
-
+		context = sticker.getContext('2d');
+	
 	sticker.dataset.flag = 1;
 	sticker.dataset.id = dataId;
 	context.clearRect(0, 0, canvas.width, canvas.height);
