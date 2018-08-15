@@ -37,11 +37,36 @@ var stickerHeight = 50;
 		savePhoto.style.display = "inline-grid";
 		canvas.style.display = "inline-grid";
 		context.drawImage(video, 0, 0, 640, 480);
+		canvas.dataset.id = sticker.dataset.id;
+		
 		var coeficient =  325 - video.clientWidth;
 		context.drawImage(sticker, globalX * 2 + coeficient, globalY * 2 + 20, stickerWidth * 2, stickerHeight * 2);
 	})
 	
 })();
+
+function gluedPhoto(setAsAvatar = true) {
+	var xhr = new XMLHttpRequest(),
+		canvas = document.getElementById('canvas'),
+		dataURL = canvas.toDataURL("image/png");
+	
+	dataUrl = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+	
+	if (canvas.dataset.id !== "undefined") {
+		var stickerPath = "/assets/stickers/" + canvas.dataset.id + ".png";
+	} else {
+		var stickerPath = "none";
+	}
+	
+	var body = 'image=' + encodeURIComponent(dataUrl) + '&sticker=' + encodeURIComponent(stickerPath) + '&avatar=' + encodeURIComponent(setAsAvatar);
+	
+	xhr.open("POST", "/user/gluedPhoto", true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    xhr.send(body);
+    xhr.onload = function() {
+		document.getElementById('test').setAttribute('src', this.responseText);
+	}
+}
 
 function imposePhoto(element) {
 	var dataId = element.dataset.id,
@@ -51,6 +76,7 @@ function imposePhoto(element) {
 		buffer = document.getElementById('sticker-buff');
 
 	sticker.dataset.flag = 1;
+	sticker.dataset.id = dataId;
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	globalX = 25;
 	globalY = 0;

@@ -8,11 +8,11 @@
 			<div id="sticker-buff">
 				<canvas id="sticker" data-flag="0" width="50" height="50"></canvas>
 			</div>
-			<canvas id="canvas" width="640" height="480"></canvas>
+			<canvas id="canvas" data-id="0" width="640" height="480"></canvas>
 			<div class="button-area">
 				<button id="capture" class="btn btn-info buff-capture-button">Take photo</button>
-				<button id="set-as-avatar" class="btn btn-success">Set as avatar</button>
-				<button id="save-photo" class="btn btn-success">Save</button>
+				<button id="set-as-avatar" class="btn btn-success" onclick="gluedPhoto()">Set as avatar</button>
+				<button id="save-photo" class="btn btn-success" onclick="gluedPhoto(false)">Save</button>
 			</div>
 		</div>
 	</div>
@@ -22,7 +22,7 @@
 			
 			<div class="column">
 					<div>
-						<img data-id="1" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/1.svg">
+						<img id="test" data-id="1" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/1.svg">
 					</div>
 					<div>
 						<img data-id="4" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/4.svg">
