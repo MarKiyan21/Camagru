@@ -45,6 +45,25 @@ body {
 	padding: 0 4px;
 }
 
+.nav-btns {
+	position: relative;
+    height: 60vh;
+}
+
+.nav-btns .btn:hover {
+	color: var(--accent);
+}
+
+#up {
+	position: absolute;
+	top: 0;
+}
+
+#down {
+	position: absolute;
+	bottom: 0;
+}
+
 .pack {
 	position: relative;
 	text-align: center;

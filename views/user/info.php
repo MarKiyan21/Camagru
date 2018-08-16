@@ -140,7 +140,7 @@
 
 <div class="row">
 	
-	<div class="collage horizontal col-md-10 col-sm-10 col-xs-10 col-sm-offset-1 col-md-offset-1 col-xs-offset-1">
+	<div class="collage horizontal col-md-9 col-sm-8 col-xs-8 col-sm-offset-1 col-md-offset-1 col-xs-offset-1">
 	  
 		<div class="row">
 			
@@ -221,6 +221,15 @@
 			
 		</div>
 	  
+	</div>
+	
+	<div class="nav-btns col-md-1 col-sm-1 col-xs-1 col-sm-offset-1 col-md-offset-0 col-xs-offset-0">
+		<?php if ($_SESSION['previous'] > 0): ?>
+			<button id="up" class="btn btn-info"><i class="im im-icon-Arrow-Up2"></i></button>
+		<?php endif;?>
+		<?php if ($_SESSION['next'] > 0): ?>
+			<button id="down" class="btn btn-info"><i class="im im-icon-Arrow-Down2"></i></button>
+		<?php endif;?>
 	</div>
 	
 </div>

@@ -294,3 +294,38 @@ if (chNotif) {
 		}
 	});
 }
+
+var up = document.getElementById('up');
+if (up) {
+	up.addEventListener("click", function() {
+		var xhr = new XMLHttpRequest();
+		
+		var body = 'action=' + encodeURIComponent("previous");
+		
+		xhr.open("POST", "/user/changePage", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		xhr.send(body);
+		
+		xhr.onload = function() {
+			window.location.pathname = "/user/info/" + username;
+		}
+	})
+}
+
+var down = document.getElementById('down');
+if (down) {
+	down.addEventListener("click", function() {
+		var xhr = new XMLHttpRequest();
+		
+		var body = 'action=' + encodeURIComponent("next");
+		
+		xhr.open("POST", "/user/changePage", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		xhr.send(body);
+		
+		xhr.onload = function() {
+			console.log(this.responseText);
+// 			window.location.reload()
+		}
+	})
+}

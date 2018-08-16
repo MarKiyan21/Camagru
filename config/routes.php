@@ -15,6 +15,7 @@ return array(
     '^user/changeEmail$' => 'user/changeEmail',
     '^user/changePassword$' => 'user/changePassword',
     '^user/changeNotification$' => 'user/changeNotification',
+    '^user/changePage$' => 'user/changePage',
     '^user/gluedPhoto$' => 'user/gluedPhoto',
     '^saveAsAvatar$' => 'activity/saveAsAvatar',
     '^uploadImage$' => 'activity/uploadImage',

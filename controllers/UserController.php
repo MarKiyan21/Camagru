@@ -143,6 +143,27 @@ class UserController {
 		Router::error404();
 	}
 	
+	public function actionChangePage() {
+		if (!empty($_POST)) {
+			$action = $_POST['action'];
+			
+			if ($action === 'next') {
+				$_SESSION['counter'] += 15;
+				$_SESSION['previous'] += 1;
+				$_SESSION['next'] -= 1;
+				$_SESSION['index'] += 15;
+			} else if ($action === 'previous') {
+				$_SESSION['counter'] -= 16;
+				$_SESSION['previous'] -= 1;
+				$_SESSION['next'] += 1;
+				$_SESSION['index'] -= 15;
+			}
+			
+			return true;
+		}
+		Router::error404();
+	}
+	
 	public function actionInfo() {
 		$whoPage = explode("/", $_SERVER['PATH_INFO']);
 		$whoPage = end($whoPage);
@@ -166,8 +187,39 @@ class UserController {
 		$user['main']['like_count'] = Activity::getLikesCount($user['main']['user_id']);
 		$user['main']['comment_count'] = Activity::getCommentsCount($user['main']['user_id']);
 		$user['main']['photo_count'] = Photos::getPhotosCount($user['main']['user_id']);
-		$user['photos'] = Photos::getPhotosByUserID($user['main']['user_id'], true);
+		$user['photos'] = array();
 		
+		$photos = Photos::getPhotosByUserID($user['main']['user_id'], false);
+		
+		if (isset($photos[$_SESSION['counter']])) {
+			while ($_SESSION['counter'] < count($photos)) {
+				if ($_SESSION['counter'] % 15 == 0 && $_SESSION['counter'] != $_SESSION['index']) {
+					$_SESSION['counter'] = 0;
+					print("asdasd");
+					break;
+				}
+				array_push($user['photos'], $photos[$_SESSION['counter']]);
+				$_SESSION['counter'] += 1;
+			}
+		}
+		
+		count($photos) - $_SESSION['counter'] > 0 ? $_SESSION['next'] = (count($photos) - $_SESSION['counter']) / 15 : $_SESSION['next'] = 0;
+		
+		/*
+if ($_SESSION['next'] > intval($_SESSION['next'])) {
+			$_SESSION['next'] = intval($_SESSION['next']) + 1;
+		}
+*/
+		
+		$_SESSION['previous'] = $_SESSION['counter'] / 15 - 1;
+		if ($_SESSION['previous'] < 0) {
+			$_SESSION['previous'] = 0;
+		} else if ($_SESSION['previous'] > intval($_SESSION['previous'])) {
+			$_SESSION['previous'] = intval($_SESSION['previous']) + 1;
+		}
+		print("counter ".$_SESSION['counter']);
+		print("; pre ".$_SESSION['previous']);
+		print("; next ".$_SESSION['next']);
 		require_once(ROOT.'/views/user/info.php');
 		
 		return true;
@@ -263,6 +315,12 @@ class UserController {
 				$password = hash("whirlpool", $_POST['pass']);
 
 				$_SESSION['user'] = $login;
+				
+				$_SESSION['counter'] = 0;
+				$_SESSION['next'] = 0;
+				$_SESSION['previous'] = 0;
+				$_SESSION['index'] = 0;
+				
 				$this->redirect('/user/info/'.$login);
 		
 				return true;
