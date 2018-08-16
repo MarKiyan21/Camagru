@@ -22,13 +22,13 @@
 			
 			<div class="column">
 					<div>
-						<img data-id="1" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/1.svg">
+						<img data-id="1" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/1.png">
 					</div>
 					<div>
-						<img data-id="4" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/4.svg">
+						<img data-id="4" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/4.png">
 					</div>
 					<div>
-						<img data-id="7" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/7.svg">
+						<img data-id="7" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/7.png">
 					</div>
 			</div>
 			
@@ -37,22 +37,22 @@
 						<img data-id="2" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/2.png">
 					</div>
 					<div>
-						<img data-id="5" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/5.svg">
+						<img data-id="5" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/5.png">
 					</div>
 					<div>
-						<img data-id="8" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/8.svg">
+						<img data-id="8" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/8.png">
 					</div>
 			</div>
 			
 			<div class="column">
 					<div>
-						<img data-id="3" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/3.svg">
+						<img data-id="3" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/3.png">
 					</div>
 					<div>
-						<img data-id="6" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/6.svg">
+						<img data-id="6" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/6.png">
 					</div>
 					<div>
-						<img data-id="9" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/9.svg">
+						<img data-id="9" class="img-responsive" onclick="imposePhoto(this)" src="/assets/stickers/9.png">
 					</div>
 			</div>
 			

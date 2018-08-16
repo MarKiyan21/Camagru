@@ -165,6 +165,7 @@ class UserController {
 	}
 	
 	public function actionInfo() {
+		print("poska");
 		$whoPage = explode("/", $_SERVER['PATH_INFO']);
 		$whoPage = end($whoPage);
 		
@@ -190,12 +191,17 @@ class UserController {
 		$user['photos'] = array();
 		
 		$photos = Photos::getPhotosByUserID($user['main']['user_id'], false);
+		print('#2');
 		
 		if (isset($photos[$_SESSION['counter']])) {
+			print('#3');
+			print( $_SESSION['index']);
 			while ($_SESSION['counter'] < count($photos)) {
+				print("gav");
+				print($_SESSION['counter']."====". count($photos));
+				print("gav");
 				if ($_SESSION['counter'] % 15 == 0 && $_SESSION['counter'] != $_SESSION['index']) {
 					$_SESSION['counter'] = 0;
-					print("asdasd");
 					break;
 				}
 				array_push($user['photos'], $photos[$_SESSION['counter']]);
@@ -217,9 +223,13 @@ if ($_SESSION['next'] > intval($_SESSION['next'])) {
 		} else if ($_SESSION['previous'] > intval($_SESSION['previous'])) {
 			$_SESSION['previous'] = intval($_SESSION['previous']) + 1;
 		}
+		print("<pre>");
 		print("counter ".$_SESSION['counter']);
 		print("; pre ".$_SESSION['previous']);
 		print("; next ".$_SESSION['next']);
+		print( "index ".$_SESSION['index']);
+		print("</pre>");
+
 		require_once(ROOT.'/views/user/info.php');
 		
 		return true;

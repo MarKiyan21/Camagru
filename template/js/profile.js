@@ -308,6 +308,7 @@ if (up) {
 		
 		xhr.onload = function() {
 			window.location.pathname = "/user/info/" + username;
+			window.location.reload();
 		}
 	})
 }
@@ -325,7 +326,7 @@ if (down) {
 		
 		xhr.onload = function() {
 			console.log(this.responseText);
-// 			window.location.reload()
+			window.location.reload();
 		}
 	})
 }
