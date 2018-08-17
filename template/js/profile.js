@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+	var collapse = document.getElementById('collapse');
+	if (collapse) {
+		var header = document.getElementById('navbar-collapse');
+		
+		collapse.addEventListener("click", function() {
+			if (header.dataset.collapse == 0) {
+				header.style.display = "block";
+				header.dataset.collapse = 1;
+			} else {
+				header.style.display = "none";
+				header.dataset.collapse = 0;
+			}
+			
+		});
+	}
+});
+
 if (document.getElementById("user-id") && document.getElementById("user-name")) {
 	var userid = document.getElementById("user-id").value;
 	var username = document.getElementById("user-name").value;

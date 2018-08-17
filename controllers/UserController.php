@@ -148,15 +148,9 @@ class UserController {
 			$action = $_POST['action'];
 			
 			if ($action === 'next') {
-				$_SESSION['counter'] += 15;
-				$_SESSION['previous'] += 1;
-				$_SESSION['next'] -= 1;
-				$_SESSION['index'] += 15;
+				$_SESSION['currentPage'] += 1;
 			} else if ($action === 'previous') {
-				$_SESSION['counter'] -= 16;
-				$_SESSION['previous'] -= 1;
-				$_SESSION['next'] += 1;
-				$_SESSION['index'] -= 15;
+				$_SESSION['currentPage'] -= 1;
 			}
 			
 			return true;
@@ -164,8 +158,24 @@ class UserController {
 		Router::error404();
 	}
 	
+	public function actionForgotPassword() {
+		if (!empty($_POST)) {
+			$email = trim(htmlspecialchars($_POST['email']));
+			$user = Users::getUserByEmail(trim(strtolower(htmlspecialchars($email))));
+			if (!$user) {
+				return true;
+			}
+			$newPassword = hash("whirlpool", uniqid());
+			Users::update("password", $newPassword, $user['user_id']);
+			$message = "Hi, " . $user['username'] . "! You password was changed. Please sigh in with this password and change it to whatever you want! Good day!\n";
+			self::sendMail($email, "Change password", $message);
+			
+			return true;
+		}
+		Router::error404();
+	}
+	
 	public function actionInfo() {
-		print("poska");
 		$whoPage = explode("/", $_SERVER['PATH_INFO']);
 		$whoPage = end($whoPage);
 		
@@ -191,44 +201,20 @@ class UserController {
 		$user['photos'] = array();
 		
 		$photos = Photos::getPhotosByUserID($user['main']['user_id'], false);
-		print('#2');
 		
-		if (isset($photos[$_SESSION['counter']])) {
-			print('#3');
-			print( $_SESSION['index']);
-			while ($_SESSION['counter'] < count($photos)) {
-				print("gav");
-				print($_SESSION['counter']."====". count($photos));
-				print("gav");
-				if ($_SESSION['counter'] % 15 == 0 && $_SESSION['counter'] != $_SESSION['index']) {
-					$_SESSION['counter'] = 0;
-					break;
-				}
-				array_push($user['photos'], $photos[$_SESSION['counter']]);
-				$_SESSION['counter'] += 1;
-			}
+		$totalPages = count($photos) / nIMG;
+		if ($totalPages > intval($totalPages) && intval($totalPages) != 0) {
+			$totalPages = intval($totalPages) + 1;
+		} else {
+			$totalPages = intval($totalPages);
 		}
 		
-		count($photos) - $_SESSION['counter'] > 0 ? $_SESSION['next'] = (count($photos) - $_SESSION['counter']) / 15 : $_SESSION['next'] = 0;
+		$from = nIMG * ($_SESSION['currentPage'] - 1);
 		
-		/*
-if ($_SESSION['next'] > intval($_SESSION['next'])) {
-			$_SESSION['next'] = intval($_SESSION['next']) + 1;
-		}
-*/
+		$user['photos'] = Photos::getPhotosByPage($from, $user['main']['user_id']);
 		
-		$_SESSION['previous'] = $_SESSION['counter'] / 15 - 1;
-		if ($_SESSION['previous'] < 0) {
-			$_SESSION['previous'] = 0;
-		} else if ($_SESSION['previous'] > intval($_SESSION['previous'])) {
-			$_SESSION['previous'] = intval($_SESSION['previous']) + 1;
-		}
-		print("<pre>");
-		print("counter ".$_SESSION['counter']);
-		print("; pre ".$_SESSION['previous']);
-		print("; next ".$_SESSION['next']);
-		print( "index ".$_SESSION['index']);
-		print("</pre>");
+		$next = true ? $totalPages - $_SESSION['currentPage'] > 0 : false;
+		$previous = true ? $_SESSION['currentPage'] - 1 > 0 : false;
 
 		require_once(ROOT.'/views/user/info.php');
 		
@@ -326,10 +312,7 @@ if ($_SESSION['next'] > intval($_SESSION['next'])) {
 
 				$_SESSION['user'] = $login;
 				
-				$_SESSION['counter'] = 0;
-				$_SESSION['next'] = 0;
-				$_SESSION['previous'] = 0;
-				$_SESSION['index'] = 0;
+				$_SESSION['currentPage'] = 1;
 				
 				$this->redirect('/user/info/'.$login);
 		
@@ -361,7 +344,7 @@ if ($_SESSION['next'] > intval($_SESSION['next'])) {
 	
 	public function actionLogout() {
 		unset($_SESSION['user']);
-		require_once(ROOT.'/views/user/logout.php');
+		$this->redirect('/');
 		
 		return true;
 	}

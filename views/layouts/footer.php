@@ -3,7 +3,7 @@
 				
 				<div class="container-fluid">
 					
-					<div class="collapse navbar-collapse">
+					<div id="navbar-collapse-footer" class="navbar-collapse" data-collapse="0">
 				
 						<ul class="nav navbar-nav navbar-left">
 							<span style="color: white;"  class="pull-left">Copyright &copy; <?=date ('Y')?> All Rights Reserved</span>

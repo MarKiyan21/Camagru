@@ -23,7 +23,7 @@ body {
 }
 
 .horizontal {
-	height: 60vh;
+	height: 85vh;
 }
 
 .collage .row {
@@ -47,7 +47,7 @@ body {
 
 .nav-btns {
 	position: relative;
-    height: 60vh;
+    height: 85vh;
 }
 
 .nav-btns .btn:hover {
@@ -758,6 +758,14 @@ body {
 	right: 3px;
 	text-decoration: none;
 	color: #333;
+}
+
+.container-fluid .pip {
+	color: var(--primary) !important;
+}
+
+.container-fluid .close {
+	color: #333 !important;
 }
 
 .popup .close:hover {

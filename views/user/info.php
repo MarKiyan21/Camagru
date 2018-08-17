@@ -224,10 +224,10 @@
 	</div>
 	
 	<div class="nav-btns col-md-1 col-sm-1 col-xs-1 col-sm-offset-1 col-md-offset-0 col-xs-offset-0">
-		<?php if ($_SESSION['previous'] > 0): ?>
+		<?php if ($previous): ?>
 			<button id="up" class="btn btn-info"><i class="im im-icon-Arrow-Up2"></i></button>
 		<?php endif;?>
-		<?php if ($_SESSION['next'] > 0): ?>
+		<?php if ($next): ?>
 			<button id="down" class="btn btn-info"><i class="im im-icon-Arrow-Down2"></i></button>
 		<?php endif;?>
 	</div>

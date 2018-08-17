@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+	var collapse = document.getElementById('collapse');
+	if (collapse) {
+		var header = document.getElementById('navbar-collapse');
+		
+		collapse.addEventListener("click", function() {
+			if (header.dataset.collapse == 0) {
+				header.style.display = "block";
+				header.dataset.collapse = 1;
+			} else {
+				header.style.display = "none";
+				header.dataset.collapse = 0;
+			}
+			
+		});
+	}
+});
+
 function hover(element) {
 	var pic = element.children[0], styleImg = pic.style;
 	var background = element.children[1], styleSpan = background.style;
@@ -10,6 +28,24 @@ function unhover(element) {
 	var background = element.children[1], styleSpan = background.style;
 	styleImg.opacity = 1;
 	styleSpan.opacity = 0;
+}
+
+function hover3(element) {
+	var pic = element.children[0], styleImg = pic.style;
+	var background1 = element.children[1], styleSpan1 = background1.style;
+	var background2 = element.children[2], styleSpan2 = background2.style;
+	styleImg.opacity = 0.3;
+	styleSpan1.opacity = 0.8;
+	styleSpan2.opacity = 0.8;
+}
+
+function unhover3(element) {
+	var pic = element.children[0], styleImg = pic.style;
+	var background1 = element.children[1], styleSpan1 = background1.style;
+	var background2 = element.children[2], styleSpan2 = background2.style;
+	styleImg.opacity = 1;
+	styleSpan1.opacity = 0;
+	styleSpan2.opacity = 0;
 }
 
 function showDetails(id) {
@@ -85,8 +121,22 @@ function likePhoto(element, imageId, userId, notif) {
 	xhr.onload = function() {
 		if (like == 0) {
 			element.classList.remove("heart-liked");
+			var likes = document.getElementById('number-likes'); 
+			var text = document.getElementById('number-likes').innerHTML;
+			var childs = text.split(" ");
+			var count = parseInt(childs[3]);
+			if (count > 0) {
+				count -= 1;
+			}
+			likes.innerHTML = childs[0] + " " + childs[1] + " " + childs[2] + " " + count;
 		} else {
 			element.className += " heart-liked";
+			var likes = document.getElementById('number-likes'); 
+			var text = document.getElementById('number-likes').innerHTML;
+			var childs = text.split(" ");
+			var count = parseInt(childs[3]);
+			count += 1;
+			likes.innerHTML = childs[0] + " " + childs[1] + " " + childs[2] + " " + count;
 		}
 	}
 }

@@ -1,3 +1,21 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+	var collapse = document.getElementById('collapse');
+	if (collapse) {
+		var header = document.getElementById('navbar-collapse');
+		
+		collapse.addEventListener("click", function() {
+			if (header.dataset.collapse == 0) {
+				header.style.display = "block";
+				header.dataset.collapse = 1;
+			} else {
+				header.style.display = "none";
+				header.dataset.collapse = 0;
+			}
+			
+		});
+	}
+});
+
 var globalWidth = 50;
 var globalX = 25;
 var globalY = 0;
@@ -87,8 +105,10 @@ function imposePhoto(element) {
 	var dataId = element.dataset.id,
 		canvas = document.getElementById('canvas'),
 		sticker = document.getElementById('sticker'),
-		context = sticker.getContext('2d');
+		context = sticker.getContext('2d'),
+		capture = document.getElementById('capture');
 	
+	capture.disabled = false;
 	sticker.dataset.flag = 1;
 	sticker.dataset.id = dataId;
 	context.clearRect(0, 0, canvas.width, canvas.height);

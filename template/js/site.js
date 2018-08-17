@@ -19,3 +19,21 @@ function showDetails(id) {
 function doSelfie() {
 	window.location.pathname = "/user/selfie";
 }
+
+document.addEventListener("DOMContentLoaded", function(event) {
+	var collapse = document.getElementById('collapse');
+	if (collapse) {
+		var header = document.getElementById('navbar-collapse');
+		
+		collapse.addEventListener("click", function() {
+			if (header.dataset.collapse == 0) {
+				header.style.display = "block";
+				header.dataset.collapse = 1;
+			} else {
+				header.style.display = "none";
+				header.dataset.collapse = 0;
+			}
+			
+		});
+	}
+});
