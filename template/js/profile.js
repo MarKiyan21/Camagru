@@ -139,9 +139,13 @@ if (doUpload) {
 var close = document.getElementsByClassName('close');
 if (close) {
 	for (i = 0; i < close.length; i++) {
-		document.getElementsByClassName('close')[i].addEventListener('click', function() {
-			document.getElementsByClassName('menu-open-button')[0].click();
-		});
+		if (document.getElementsByClassName('close')) {
+			document.getElementsByClassName('close')[i].addEventListener('click', function() {
+				if (document.getElementsByClassName('menu-open-button')[0]) {
+					document.getElementsByClassName('menu-open-button')[0].click();
+				}
+			});
+		}
 	}
 }
 
@@ -347,4 +351,43 @@ if (down) {
 			window.location.reload();
 		}
 	})
+}
+
+var searchUser = document.getElementById('search-user');
+if (searchUser) {
+	searchUser.addEventListener('submit', event => {
+		event.preventDefault();
+		var xhr = new XMLHttpRequest();
+		var searchLogin = document.getElementById('user-login');
+		var helpBlock = document.getElementById('user-found');
+		var login = searchLogin.value;
+		
+		var body = 'login=' + encodeURIComponent(login);
+		
+		xhr.open("POST", "/user/searchUser", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		xhr.send(body);
+		
+		xhr.onload = function() {
+			switch (this.responseText) {
+				case "exist":
+					var close = document.getElementsByClassName('closes');
+					if (close) {
+						for (i = 0; i < close.length; i++) {
+							document.getElementsByClassName('closes')[i].click();
+						}
+					}
+					if (window.location.pathname === "/user/info/" + login) {
+						window.location.reload();
+					} else {
+						window.location.pathname = "/user/info/" + login;
+					}
+					break;
+				default:
+					helpBlock.style.display = "block";
+					helpBlock.textContent = "User not found";
+					searchLogin.parentNode.className += " has-error";
+			}
+		}
+	});
 }

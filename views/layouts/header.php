@@ -49,6 +49,8 @@
 			<div class="collapse navbar-collapse" id="navbar-collapse" data-collapse="0">
 				
 				<ul class="nav navbar-nav navbar-right">
+
+					<li><a href="#popupchik2" class="href"><i class="fa fa-search"></i></a></li>
 					<?php if(empty($_SESSION['user'])): ?>
 						<li class="nav-item"><a class="nav-link" href="/user/login">Sign In</a></li>
 						<li class="nav-item"><a class="nav-link" href="/user/register">Sign Up</a></li>
@@ -61,5 +63,23 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
+	
+	<div id="popupchik2" class="overlay" style="z-index: 3;">
+		<div class="popup col-md-6 col-sm-6 col-xs-6 col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
+			<div class="modal-body">
+				<a class="closes" href="#">&times;</a>
+				<h4 class="modal-title">Search someone</h4>
+			</div>
+			
+			<div class="modal-footer">
+				<form id="search-user">
+					<div class="form-group col-md-4 col-sm-6 col-xs-12 col-md-offset-4 col-sm-offset-3" onclick="delClass(this.parentNode);">
+						<input id="user-login" class="form-control" type="text" name="newlogin" placeholder="User login here..." required>
+						<span id="user-found" style="display: none; color: red;" class="help-block pull-left">Some text...</span>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 </header>

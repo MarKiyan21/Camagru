@@ -11,6 +11,7 @@ return array(
     '^user/logout$' => 'user/logout',
     '^user/info/([A-Za-z0-9]*$)' => 'user/info/$1',
     '^user/selfie$' => 'user/selfie',
+    '^user/searchUser$' => 'user/searchUser',
     '^user/changeLogin$' => 'user/changeLogin',
     '^user/changeEmail$' => 'user/changeEmail',
     '^user/changePassword$' => 'user/changePassword',

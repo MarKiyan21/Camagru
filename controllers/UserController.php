@@ -401,5 +401,20 @@ class UserController {
 		}
 		Router::error404();
 	}
+	
+	public function actionSearchUser() {
+		if (!empty($_POST)) {
+			$login = $_POST['login'];
+			
+			if (self::isLoginExist(trim(htmlspecialchars($login)))) {
+				print("exist");
+				return true;
+			}
+			print("not found");
+			return true;
+		}
+		Router::error404();
+		return false;
+	}
 
 }
